@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bus Booking</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Bus Booking</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Book Your Bus Ticket</h2>
+      <form>
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" required>
+        <br><br>
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" required>
+        <br><br>
+        <label for="departure">Departure Date:</label>
+        <input type="date" id="departure" name="departure" required>
+        <br><br>
+        <label for="return" id="return-label" style="display:none;">Return Date:</label>
+        <input type="date" id="return" name="return" style="display:none;">
+        <br><br>
+        <button type="submit">Book Ticket</button>
+      </form>
+      <br><br>
+      <button id="oneway" class="trip-button" onclick="displayReturn(false)">One Way</button>
+      <button id="roundtrip" class="trip-button" onclick="displayReturn(true)">Round Trip</button>
+    </main>
+    <footer>
+      &copy; 2023 Bus Booking
+    </footer>
+    <script>
+      function displayReturn(display) {
+        var returnLabel = document.getElementById("return-label");
+        var returnInput = document.getElementById("return");
+        if (display) {
+          returnLabel.style.display = "block";
+          returnInput.style.display = "block";
+        } else {
+          returnLabel.style.display = "none";
+          returnInput.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
