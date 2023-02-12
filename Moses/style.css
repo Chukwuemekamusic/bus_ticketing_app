@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.design{
+    width: 100%;
+    height: vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5), #477a67), url(Roadnetwork4.jpg);
+    background-position: center;
+    background-size: 20cm;
+    text-align: center;
+}
+#buslogo{
+    width: 180px;
+    margin-top: 5px;
+}
+footer>div>section>ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+footer>div>section {
+    text-align: center;
+}
+footer>div>section>ul>li a {
+    float: center;
+}
+footer>p{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    padding: 10px;
+    background-color: #477a67;
+}
+nav>ul {
+    list-style-type: none;
+    text-align: right;
+    padding: 0;
+    overflow: hidden;
+}
+nav>ul>li {
+    float: left;
+    padding-left: 50px;   
+}
+nav>ul>li a {
+    display:  block;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0px;
+    text-decoration: none;
+}
+header{
+    border: 3px solid #d0dc7a;
+    max-height: 150px;
+}
+h2{
+    color: white;
+    padding: 5px;
+}
+header>div>h2{
+    color: black;
+    margin-top: 0;
+}
+table{
+    margin: auto;
+    padding: 0 20px;
+}
+#vectors{
+    max-width: 80px;
+}
+hr{
+    border: 1px solid black;
+}
+p, label, td{
+    color: #ffff;
+}
+footer{
+    margin-top: 50px;
+}
+section>ul, section>h3{
+    margin-left: 10px;
+}
+main{
+    margin-top: -20px;
+}

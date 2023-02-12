@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bus Booking</title>
+    <!-- <link rel="stylesheet" href="../cmm004_bus_app/style.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Bus Booking</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Sign in/Sign up</a></li>
+
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Book Your Bus Ticket</h2>
+      <form id="booking-form">
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" required>
+        <br><br>
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" required>
+        <br><br>
+        <label for="departure">Departure Date:</label>
+        <input type="date" id="departuredate" name="departuredate" required><br>
+        <button id="searchbusbtn" type="submit">Search for Bus</button>
+        <br><br>
+      </form>
+      <br><br>
+      <button id="oneway" class="trip-button" onclick="removeReturnInput()">One Way</button>
+      <button id="roundtrip" class="trip-button" onclick="addReturnInput()">Round Trip</button>
+      <br><br>
+    </main>
+    <footer>
+      &copy; 2023 Bus Booking
+    </footer>
+   
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Edge Bus Home</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
+    </head>
+<body>
+    <header class="grid-container">
+        <div class="grid-33">
+            <img id="buslogo" src="Buslogo.png" alt="Edge Bus Logo">
+            <h2>Edge Bus Solution!</h2>
+        </div>
+        <div class="grid-33">
+            <p></p>
+        </div>
+        <div class="grid-33">
+            <nav>
+                <ul>
+                    <li><a href = "#">Home</a></li>
+                    <li><a href = "#">About Us</a></li>
+                    <li><button><a href = "#">Sign-in|Sign up</a></button></li>   
+                </ul>
+            </nav>
+        </div>
+        
+    </header>
+    
+    <main>
+        <section class="design">
+            <div>
+                <h2>Book Your Bus Ticket</h2>
+                
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><img id="vectors" src="booking.PNG"></th>
+                                <th><img id="vectors" src="payment.PNG"></th>
+                                <th><img id="vectors" src="luggage.PNG"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BOOK</td>
+                                <td>PAY</td>
+                                <td>TRAVEL</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+                <p>"Your Better Way To Travel"</p>
+
+                <form id="booking-form">
+                  <label for="from">From:</label>
+                  <input type="text" id="from" name="from" required>
+                  <br><br>
+                  <label for="to">To:</label>
+                  <input type="text" id="to" name="to" required>
+                  <br><br>
+                  <label for="departure">Departure Date:</label>
+                  <input type="date" id="departuredate" name="departuredate" required><br>
+                  <br><br>
+                  <button id="oneway" class="trip-button" onclick="removeReturnInput()">One Way</button>
+                  <button id="roundtrip" class="trip-button" onclick="addReturnInput()">Round Trip</button>
+                  <br><br>
+                  <a href="search.html"><button id="searchbusbtn" type="submit">Search for Bus</button></a>
+                  <br><br>
+                </form>
+            </div>
+            
+        </section>
+
+        <section>
+            <h3>Awards/Recognition</h3>
+            <ul>
+                <li>Best Commuter 2022</li>
+                <li>Best Customer Service Oriented 2021, 2022.</li>
+                <li>Best Transport Service - "UK Tabloid"</li>
+                <li>Customer Friendly Application - "Tech. Magazine"</li>
+            </ul>
+            
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <div class="grid-container">
+            <section class="grid-50">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>info@edgebus.com</li>
+                    <li>+44 7498 xxxxxxx</li>
+                </ul>
+            </section>
+            <section class="grid-50">
+                <h4>Connect with Us</h4>
+                <ul>
+                    <li><a href="http://www.facebook.com"><img src="facebooklogo.png" alt="Facebook"></a></li>
+                    <li><a href="http://www.twitter.com"><img src="twitterlogo.png" alt="Twitter"></a></li>
+                    <li><a href="http://www.instagram.com"><img src="instagramlogo.png" alt="Instagram"></a></li>
+                </ul>
+            </section>
+        </div>
+        
+        <p>(c) 2023 Edge Bus</p>
+    </footer>
+
+    </body>
+</html>
+
