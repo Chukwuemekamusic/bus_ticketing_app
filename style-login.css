@@ -50,7 +50,7 @@ body {
   }
   
   form {
-    margin-top: 50px;
+    margin-top: 20px;
     display: inline-block;
     text-align: left;
   }
@@ -63,8 +63,8 @@ body {
   
   form input[type="text"],
   form input[type="date"] {
-    width: 200px;
-    padding: 10px;
+    width: auto;
+    padding: auto;
     font-size: 16px;
   }
   
