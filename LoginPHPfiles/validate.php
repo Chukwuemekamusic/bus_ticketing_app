@@ -3,13 +3,13 @@ session_start();   //start a session here in case user login successfully
 if (!IsSet($_POST))    //if no $_POST array
 {
     session_destroy();   //clear session
-    header("Location: login.php");   //send user back to login page
+    header("Location: /app/cmm004_bus_app/login.html");   //send user back to login page
     exit();
 }
 if (!IsSet($_POST["user"]) || !IsSet($_POST["password"]))  // no username or password submitted
 {
     session_destroy();   
-    header("Location: login.php"); //send user back to Login page
+    header("Location: /app/cmm004_bus_app/login.html"); //send user back to Login page
     exit();
 }
 /* 
@@ -55,7 +55,7 @@ below happens for unsuccessful login
 */
 
 session_destroy();    //destroy the session
-header("Location: login.php");  //send user back to login page
+header("Location: /app/cmm004_bus_app/login.html");  //send user back to login page
 
 ?>
 
@@ -68,7 +68,7 @@ session_start();	  //create or retrieve session
 if (!IsSet($_SESSION["user"]))
 	{
 	//if it is not there, forward to login page
-	header("Location: login.php");
+	header("Location: /app/cmm004_bus_app/login.html");
 	exit();
 	} -->
 

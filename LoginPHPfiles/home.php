@@ -1,5 +1,5 @@
 <?php
-session.start();    //create or retrieve session
+session_start();    //create or retrieve session
 if (!IsSet($_SESSION["user"]))  //user name must in session to stay here
    header("Location: login.php");   //if not, go back to login page
 $username=$_SESSION["user"];   //get user name into the variable $username

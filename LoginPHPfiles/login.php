@@ -1,10 +1,11 @@
 <?php
-session.start();    //create or retrieve session
+session_start();    //create or retrieve session
 if (IsSet($_SESSION["user"]))  //if username exists in session, user has logged in
    {
     header("Location: home.php");   //forward to use home page
     exit();
    }
+
 ?>
 
 <!--Otherwise show Login page/form-->
@@ -15,7 +16,7 @@ if (IsSet($_SESSION["user"]))  //if username exists in session, user has logged 
         <title>Login Using PHP Session Example</title>
         <link rel="stylesheet" href="style.css">
         <style>
-            table {border-style:solid;border-width:1px;border_color:blue}
+            table {border-style:solid;border-width:1px; border-color: blue;}
             td {background-color:yellow}
         </style>
     </head>

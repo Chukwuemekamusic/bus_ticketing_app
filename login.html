@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Bus Booking</title>
-    <!-- <link rel="stylesheet" href="../cmm004_bus_app/style.css"> -->
-    <link rel="stylesheet" href="style-login.css">
-    <script src="app.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>Bus Booking</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="faq.html">Help</a></li>
-          <li><a href="login.html">Log in/Sign up</a></li>
 
-        </ul>
-      </nav>
-    </header>
-    <main>
+<head>
+  <meta charset="UTF-8">
+  <title>Bus Booking</title>
+  <!-- <link rel="stylesheet" href="../cmm004_bus_app/style.css"> -->
+  <link rel="stylesheet" href="style-login.css">
+  <script src="app.js"></script>
+</head>
 
-        <h2>Login to your Bus Account </h2>
-        <p>Yet to create an account? <a href="signup.html">Sign Up</a></p>
-        <form action="#" id="signin">
-          <p>Username</p>
-        <p><input type="text" id="user"</p>
-        <p>Password</p>
-        <p><input type="password" id="psw"</p>
-        <p><input type="submit" value="Submit"></p>
+<body>
+  <header>
+    <h1>Bus Booking</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">Help</a></li>
+        <li><a href="login.html">Log in/Sign up</a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Login to your Bus Account </h2>
+    <p>Yet to create an account? <a href="signup.html">Sign Up</a></p>
+    <form action="/app/cmm004_bus_app/LoginPHPfiles/validate.php" id="signin" method="post">
+      <label for="user">Username</label>
+      <input type="text" id="user" name="user" required><br>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required><br>
+      <input type="submit" value="Submit">
     </form>
 
 
-    </main>
-    <footer>
-      &copy; 2023 Bus Booking
-    </footer>
-   
-  </body>
+  </main>
+  <footer>
+    &copy; 2023 Bus Booking
+  </footer>
+
+</body>
+
 </html>
