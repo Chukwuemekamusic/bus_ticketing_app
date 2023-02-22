@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="grid-container">
+        <section class="grid-33">
+            <br><br><br><br><br><br><br><br><br><br>
+            <h1>Contact:</h1>
+            <ul>
+                <li><strong>Email:</strong><a href="mailto:e.oloruntobi@rgu.ac.uk">e.oloruntobi@rgu.ac.uk</a></li>
+                <li><strong>Phone:</strong> +44-245-7894-234</li>
+                <li><strong>Address:</strong> Garthdee, Aberdeen, Scotland, UK</li>
+            </ul>
+        </section>
+        <section class="grid-66">
+            <h1>Customer Feedback</h1>
+            <p>Please get in touch with us. We'll contact you as soon as we can after you complete the form below.
+            </p>
+            <form action="submit-form.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required><br><br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Bus Inc. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
