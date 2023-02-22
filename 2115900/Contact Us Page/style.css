@@ -1,11 +1,12 @@
-/* Style the body */
+/* @import "templatecolours.css"; */
+/* BODY */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
   
-  /* Style the header and navigation menu */
+  /* HEADER AND NAVIGATOR MENU */
   header {
     background-color: #121eba;
     color: #fff;
@@ -34,7 +35,7 @@ body {
     text-decoration: underline;
   }
   
-  /* Style the main content */
+  /* MAIN CONTENT */
   main {
     padding: 20px;
   }
@@ -86,7 +87,7 @@ body {
     font-weight: bold;
   }
   
-  /* Style the footer */
+  /* FOOTER */
   footer {
     background-color: #0e15d6;
     color: #fff;
