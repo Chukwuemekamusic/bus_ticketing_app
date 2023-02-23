@@ -55,7 +55,7 @@ below happens for unsuccessful login
 */
 
 session_destroy();    //destroy the session
-header("Location: /app/cmm004_bus_app/login.html");  //send user back to login page
+header("Location: login.html");  //send user back to login page
 
 ?>
 
