@@ -34,7 +34,6 @@ $last_name = $_SESSION['last_name'];
     <main>
     <p>
         Welcome back, <?php print $first_name; ?>!
-        This is your home page
         You are logged in, you can decide to go to <a href="managebooking.php">Manage bookings</a> page
     </p>
     <h2>Book Your Bus Ticket</h2>
