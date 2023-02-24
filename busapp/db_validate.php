@@ -1,5 +1,5 @@
 <?php
-// session_start();   //start a session here in case user login successfully
+session_start();   //start a session here in case user login successfully
 // if (!IsSet($_POST))    //if no $_POST array
 // {
 //     session_destroy();   //clear session
@@ -13,10 +13,12 @@
 //     exit();
 // }
 
-$servername = "localhost";
+$servername = "lamp-database";
 $username = "root";
 $password = "root";
+// $password = "tiger";
 $dbname = "BusApp";
+// $dbname = "docker";
 
 // Establish a connection to the database
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -42,12 +44,16 @@ $result = mysqli_query($conn, $sql);
 // If the user is found, compare the submitted password with the password retrieved from the database
 if (mysqli_num_rows($result) > 0) {
   $row = mysqli_fetch_assoc($result);
-  if (password_verify($psw, $row['password'])) {
+  if ($psw == $row['password']) {
     // Redirect the user to a protected area of your website
     header('Location: home.php');
+    $_SESSION['email'] = $email;
+    $_SESSION['first_name'] = $row['first_name'];
+    $_SESSION['last_name'] = $row['last_name'];
     exit();
-//   } else {
-//     echo "Invalid username or password";
+  } else {
+  
+    echo "You are correct";
 }
 } else {
   echo "Invalid username or password";

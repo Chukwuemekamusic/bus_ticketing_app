@@ -1,8 +1,10 @@
 <?php
 session_start();    //create or retrieve session
-if (!IsSet($_SESSION["user"]))  //user name must in session to stay here
-   header("Location: login.php");   //if not, go back to login page
-$username=$_SESSION["user"];   //get user name into the variable $username
+if (!IsSet($_SESSION["email"])){ //user name must in session to stay here
+   header("Location: login.php"); }  //if not, go back to login page
+$email=$_SESSION["email"];   //get user name into the variable $username
+$first_name = ucfirst($_SESSION['first_name']); // ucfirst captitalises the first name
+$last_name = $_SESSION['last_name'];
 ?>
 
 <!DOCTYPE html>
