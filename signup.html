@@ -23,21 +23,19 @@
     </header>
     <main>
         <h2>Registration</h2>
-        <form action="login.html" id="signup-form" method="post">
+        <form action="form_process.php" id="signup-form" method="post">
         <p>First Name</p>
-          <p><input type="text" id="name"</p></p>
+          <p><input type="text" id="name" name="first_name" required</p></p>
           <p>Last Name</p>
-        <p><input type="text" id="name"</p>
+        <p><input type="text" id="name" name="last_name"</p>
         <p>Phone number </p>
-        <p><input type="tel" id="phone"</p>
+        <p><input type="tel" id="phone" name="phone"</p>
         <p>Email </p>
-        <p><input type="email" id="email"</p>
+        <p><input type="email" id="email" name="email" required</p>
         <p>Username </p>
-        <p><input type="text" id="user"</p>
+        <p><input type="text" id="user" name="user"</p>
         <p>Password</p>
-        <p><input type="password" id="psw"</p>
-        <p>Re-enter Password</p>
-        <p><input type="password" id="psw"</p>
+        <p><input type="password" id="psw" name="password" required</p>
         <p><input type="submit" value="Submit"></p>
     </form>
 

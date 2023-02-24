@@ -6,7 +6,6 @@
   <title>Bus Booking</title>
   <!-- <link rel="stylesheet" href="../cmm004_bus_app/style.css"> -->
   <link rel="stylesheet" href="style-login.css">
-  <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
   <script src="app.js"></script>
 </head>
 
@@ -26,9 +25,9 @@
   <main>
     <h2>Login to your Bus Account </h2>
     <p>Yet to create an account? <a href="signup.html">Sign Up</a></p>
-    <form action="/cmm004_bus_app/LoginPHPfiles/validate.php" id="signin" method="post">
-      <label for="user">Username</label>
-      <input type="text" id="user" name="user" required><br>
+    <form action="db_validate.php" id="signin" method="post">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" required><br>
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required><br>
       <input type="submit" value="Submit">
