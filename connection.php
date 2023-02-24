@@ -4,10 +4,13 @@
 // $psw = $_POST['psw'];
 // $hashed_password = password_hash($psw, PASSWORD_BCRYPT);
 
-$servername = 'localhost';
-$username = 'root';
-$password = 'root';
-$dbname = 'BusApp';
+$servername = "localhost";
+// $servername = "lamp-database";
+$username = "root";
+$password = "root";
+// $password = "tiger";
+$dbname = "BusApp";
+// $dbname = "docker";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
