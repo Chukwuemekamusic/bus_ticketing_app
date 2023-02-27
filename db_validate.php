@@ -36,7 +36,7 @@ if (mysqli_num_rows($result) > 0) {
       // if ($psw == $row['password']) {
   if ($psw == $row['auth']) {
 
-    // Redirect the user to a protected area of your website
+    // Redirect to user home page
     header('Location: home.php');
     $_SESSION['email'] = $email;
     $_SESSION['first_name'] = $row['first_name'];
