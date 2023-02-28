@@ -157,3 +157,7 @@ div>a {
     padding: 0;
     overflow: hidden;
 }
+
+main p{
+    color: black;
+}
