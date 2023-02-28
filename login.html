@@ -5,41 +5,83 @@
   <meta charset="UTF-8">
   <title>Bus Booking</title>
   <!-- <link rel="stylesheet" href="../cmm004_bus_app/style.css"> -->
-  <link rel="stylesheet" href="style-login.css">
+  <link rel="stylesheet" href="./Assets/css/stylenew.css">
   <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
   <script src="app.js"></script>
 </head>
 
 <body>
-  <header>
-    <h1>Bus Booking</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="faq.html">Help</a></li>
-        <li><a href="login.html">Log in/Sign up</a></li>
+  <header class="container">
+    <div class="col-md-12">
+        <div id="headerContainer" class="row">
+            <div class="col-md-2">
+                <img id="buslogo" src="./Assets/Buslogo.png" alt="Edge Bus Logo"> 
+            </div>
+        
+            <div class="col-md-10">
+            <nav>
+                <ul class="nav justify-content-end">
+                    <li><a href = "home.html" class="nav-item" >Home</a></li>
+                    <li><a href = "about.html" class="nav-item">About Us</a></li>
+                    <li><a href = "login.html" class="nav-item active">Sign-in|Sign up</a></li>   
+                    <li><a href = "contactus.html" class="nav-item">Contact Us</a></li>   
+                </ul>
+            </nav>
+            </div>
+        </div>    
+    </div>
 
-      </ul>
-    </nav>
-  </header>
+</header>
   <main>
+    <div class="loginmain">
     <h2>Login to your Bus Account </h2>
     <p>Yet to create an account? <a href="signup.html">Sign Up</a></p>
-    <form action="db_validate.php" id="signin" method="post">
+    <form class="contactinfo" action="db_validate.php"  method="post">
       <label for="email">Email</label>
       <input type="text" id="email" name="email" required><br><br>
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required><br><br>
       <input type="submit" value="Submit">
     </form>
+    </div>
 
 
   </main>
   <footer>
-    &copy; 2023 Bus Booking
-  </footer>
+    <hr>
+    <div class="container">
+        <div class="col-md-12" id="lastleft">
+            <div id="footercontainer" class="row">
+                <section class="col-md-3">
+                    <!-- <a href="contactus.html"><h4>Contact Us</h4></a> -->
+                    <ul>
+                        <li>Email: info@xxxxbus.com</li>
+                        <li>Phone No.: +44 7498 xxxxxxx</li>
+                        <li>Address: Garthdee, Aberdeen, Scotland, UK</li>
+                    </ul>
+                </section>
+                <section class="col-md-6">
+                </section>
+                <section class="col-md-3">
+                    <h4>Quick Guide</h4>
+                    <p><a href="faq.html">Frequently Asked Question</a></p>      
+                </section>
+            </div>  
+        </div>
+    </div>   
+    <div id="last">
+        <p>&copy; 2023 Bus Inc. All rights reserved.</p>
+    </div>
+    
+</footer>
+    
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/8c47bf12e3.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

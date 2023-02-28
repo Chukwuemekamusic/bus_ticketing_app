@@ -1,6 +1,7 @@
 body{
     width: 100%;
     margin: 0;
+    /* background-color: #363636; */
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
@@ -217,4 +218,15 @@ form label {
   #thankyou{
     color: white;
     text-align: center;
+  }
+
+  /* Tunde style */
+  .loginmain {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .loginmain h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
   }

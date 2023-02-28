@@ -34,23 +34,23 @@ nav a:hover {
   text-decoration: underline;
 }
 
-main {
+#loginmain {
   padding: 20px;
   text-align: center;
 }
 
-main h2 {
+#loginmain h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-form {
+#signin {
   margin-top: 20px;
   display: inline-block;
   text-align: left;
 }
 
-form label {
+#loginmain form label {
   display: block;
   margin-bottom: 10px;
   font-size: 18px;
