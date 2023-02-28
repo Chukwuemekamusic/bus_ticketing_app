@@ -121,7 +121,7 @@ main hr{
 }
 
 header{
-    border: 3px solid #d0dc7a;
+    /* border: 3px solid #d0dc7a; */
     max-height: 150px;
 }
 
