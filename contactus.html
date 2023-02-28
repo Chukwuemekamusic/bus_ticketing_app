@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Contact Us</title>
     <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-    <link rel="stylesheet" href="/app/cmm004_bus_app/Moses/stylenew.css">
+    <link rel="stylesheet" href="./Assets/css/stylenew.css">
     <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
@@ -16,16 +16,16 @@
         <div class="col-md-12">
             <div id="headerContainer" class="row">
                 <div class="col-md-2">
-                    <img id="buslogo" src="/app/cmm004_bus_app/Moses/Buslogo.png" alt="Edge Bus Logo"> 
+                    <img id="buslogo" src="./Assets/Buslogo.png" alt="Edge Bus Logo"> 
                 </div>
             
                 <div class="col-md-10">
                 <nav>
                     <ul class="nav justify-content-end">
-                        <li><a href = "/app/cmm004_bus_app/Moses/homenew.html" class="nav-item" >Home</a></li>
+                        <li><a href = "home.html" class="nav-item" >Home</a></li>
                         <li><a href = "#" class="nav-item">About Us</a></li>
                         <li><a href = "#" class="nav-item">Sign-in|Sign up</a></li>   
-                        <li><a href = "/app/cmm004_bus_app/2115900/Contact Us Page/contactus.html" class="nav-item">Contact Us</a></li>   
+                        <li><a href = "contactus.html" class="nav-item">Contact Us</a></li>   
                     </ul>
                 </nav>
                 </div>
@@ -38,7 +38,7 @@
             <p style="text-align: center;">Please get in touch with us. We'll contact you as soon as we can after you complete the form below.
             </p>
         <div id="customerfeedback">
-            <form class="contactinfo" action="submit-form.php" method="POST">
+            <form class="contactinfo" action="thankyou.html" method="get">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br><br>
                 <label for="email">Email:</label>
@@ -50,17 +50,40 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div style="text-align: center;" id="contactfooterlist">
-            <p>You can also contact us direct</p>
-            <ul>
-                <li><strong>Email:</strong><a href="mailto:e.oloruntobi@rgu.ac.uk">e.oloruntobi@rgu.ac.uk</a></li>
-                <li><strong>Phone:</strong> +44-245-7894-234</li>
-                <li><strong>Address:</strong> Garthdee, Aberdeen, Scotland, UK</li>
-            </ul>
+        <div  class="centertext">            
+            <p><strong>You can also contact us directly</strong></p>
+            <p><strong>Email:</strong><a href="mailto:e.oloruntobi@rgu.ac.uk">e.oloruntobi@rgu.ac.uk</a></p>
+            <p><strong>Phone:</strong> +44-245-7894-234</p>
+            <p><strong>Address:</strong> Garthdee, Aberdeen, Scotland, UK</p>
+            
         </div>
     </main>
     <footer>
-        <p>&copy; 2023 Bus Inc. All rights reserved.</p>
+        <hr>
+        <div class="container">
+            <div class="col-md-12" id="lastleft">
+                <div id="footercontainer" class="row">
+                    <section class="col-md-3">
+                        <!-- <a href="contactus.html"><h4>Contact Us</h4></a> -->
+                        <ul>
+                            <li>Email: info@xxxxbus.com</li>
+                            <li>Phone No.: +44 7498 xxxxxxx</li>
+                            <li>Address: Garthdee, Aberdeen, Scotland, UK</li>
+                        </ul>
+                    </section>
+                    <section class="col-md-6">
+                    </section>
+                    <section class="col-md-3">
+                        <h4>Quick Guide</h4>
+                        <p><a href="faq.html">Frequently Asked Question</a></p>      
+                    </section>
+                </div>  
+            </div>
+        </div>   
+        <div id="last">
+            <p>&copy; 2023 Bus Inc. All rights reserved.</p>
+        </div>
+        
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
