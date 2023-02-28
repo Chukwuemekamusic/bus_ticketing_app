@@ -4,27 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact Us</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link rel="stylesheet" href="/app/cmm004_bus_app/Moses/stylenew.css">
+    <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="contactus.html">Contact Us</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
-            </ul>
-        </nav>
+    <header class="container">
+        <div class="col-md-12">
+            <div id="headerContainer" class="row">
+                <div class="col-md-2">
+                    <img id="buslogo" src="/app/cmm004_bus_app/Moses/Buslogo.png" alt="Edge Bus Logo"> 
+                </div>
+            
+                <div class="col-md-10">
+                <nav>
+                    <ul class="nav justify-content-end">
+                        <li><a href = "/app/cmm004_bus_app/Moses/homenew.html" class="nav-item" >Home</a></li>
+                        <li><a href = "#" class="nav-item">About Us</a></li>
+                        <li><a href = "#" class="nav-item">Sign-in|Sign up</a></li>   
+                        <li><a href = "/app/cmm004_bus_app/2115900/Contact Us Page/contactus.html" class="nav-item">Contact Us</a></li>   
+                    </ul>
+                </nav>
+                </div>
+            </div>    
+        </div>
+
     </header>
     <main class=>
         <h1 style="text-align: center;">Customer Feedback</h1>
             <p style="text-align: center;">Please get in touch with us. We'll contact you as soon as we can after you complete the form below.
             </p>
-        <div class="form-container">
-            <form action="submit-form.php" method="POST">
+        <div id="customerfeedback">
+            <form class="contactinfo" action="submit-form.php" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br><br>
                 <label for="email">Email:</label>
@@ -36,7 +50,7 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div style="text-align: center;">
+        <div style="text-align: center;" id="contactfooterlist">
             <p>You can also contact us direct</p>
             <ul>
                 <li><strong>Email:</strong><a href="mailto:e.oloruntobi@rgu.ac.uk">e.oloruntobi@rgu.ac.uk</a></li>
@@ -48,6 +62,11 @@
     <footer>
         <p>&copy; 2023 Bus Inc. All rights reserved.</p>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/8c47bf12e3.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
