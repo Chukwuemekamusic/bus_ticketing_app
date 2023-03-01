@@ -32,14 +32,11 @@ $last_name = $_SESSION['last_name'];
                     <div class="col-md-10">
                     <nav>
                         <ul class="nav justify-content-end">
-                            <li><a href = "home.html" class="nav-item" >Home</a></li>
+                            <li><a href = "profile.php" class="nav-item" >Home</a></li>
                             <li><a href = "about.html" class="nav-item">About Us</a></li>
                             <li><a href = "contactus.html" class="nav-item">Contact Us</a></li>  
-                            <li><a href="managebooking.php">Manage trip</a></li> 
-                            
-                            <li><p>
-        Hello <?php print $first_name; ?>!        
-    </p></li>
+                            <li><a href="managebooking.php" class="nav-item" >Manage trip</a></li>                             
+                            <li><p>Hello <?php print $first_name; ?>!</p></li>
     <li><a href="logout.php">Logout</a></li> 
                         </ul>
                     </nav>
@@ -57,9 +54,9 @@ $last_name = $_SESSION['last_name'];
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th><img id="vectors" src="booking.PNG"></th>
-                                            <th><img id="vectors" src="payment.PNG"></th>
-                                            <th><img id="vectors" src="luggage.PNG"></th>
+                                            <th><img id="vectors" src="./Assets/booking.PNG"></th>
+                                            <th><img id="vectors" src="./Assets/payment.PNG"></th>
+                                            <th><img id="vectors" src="./Assets/luggage.PNG"></th>
                                         </tr>
                                     </thead>
                                     <tbody>

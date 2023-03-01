@@ -17,9 +17,13 @@ if (!IsSet($_POST["email"]) || !IsSet($_POST["password"]))  // no username or pa
 }
 
 
-include("connection.php");
+// include_once("connection.php");
+include_once("connection_lamp.php");
+
+
+
 // // Establish a connection to the database
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Retrieve the submitted email and password
 $email = $_POST['email'];
