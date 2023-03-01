@@ -8,30 +8,45 @@ if (!IsSet($_SESSION["email"]))  //user variable must exist in session to stay h
 ?>
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>User Home</title>
-    <!-- <link rel="stylesheet" href="../cmm004_bus_app/style.css"> -->
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
-  </head>
-  <body>
-    <header>
-    <h1>Manage Booking Page</h1>
-      <nav>
-        <ul>
-          <li><a href="home.php">My account</a>
-          </li>
-          <li>
-              <!--below form allows you to logout by invoking the logoutphp script-->  
-          <form method="get" action=logout.php>
-        <button type="submit">Logout</button>
-    </form>
-  </li>
-        </ul>
-      </nav>
-    </header>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1, maximum-scale=1">
+        <title>Edge Bus Home</title>
+        <link rel="stylesheet" href="./Assets/css/stylenew.css">
+        <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+    </head>
+
+    <body>
+        <header class="container">
+            <div class="col-md-12">
+                <div id="headerContainer" class="row">
+                    <div class="col-md-2">
+                        <img id="buslogo" src="./Assets/Buslogo.png" alt="Edge Bus Logo"> 
+                    </div>
+                
+                    <div class="col-md-10">
+                    <nav>
+                        <ul class="nav justify-content-end">
+                            <li><a href = "home.html" class="nav-item" >Home</a></li>
+                            <li><a href = "about.html" class="nav-item">About Us</a></li>
+                            <li><a href = "contactus.html" class="nav-item">Contact Us</a></li>  
+                            <li><a href="profile.php">My Account</a></li> 
+                            
+                            <li><p>
+        Hello <?php print $first_name; ?>!        
+    </p></li>
+    <li><a href="logout.php">Logout</a></li> 
+                        </ul>
+                    </nav>
+                    </div>
+                </div>    
+            </div>
+
+        </header>
     <main>
     <p>
                 Welcome back, <?php print $first_name; ?>!

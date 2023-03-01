@@ -37,7 +37,7 @@ if (mysqli_num_rows($result) > 0) {
   if ($psw == $row['auth']) {
 
     // Redirect to user home page
-    header('Location: home.php');
+    header('Location: profile.php');
     $_SESSION['email'] = $email;
     $_SESSION['first_name'] = $row['first_name'];
     $_SESSION['last_name'] = $row['last_name'];
