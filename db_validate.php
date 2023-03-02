@@ -17,8 +17,8 @@ if (!IsSet($_POST["email"]) || !IsSet($_POST["password"]))  // no username or pa
 }
 
 
-// include_once("connection.php");
-include_once("connection_lamp.php");
+include_once("connection.php");
+// include_once("connection_lamp.php");
 
 
 
@@ -51,7 +51,8 @@ if (mysqli_num_rows($result) > 0) {
     echo "Invalid password";
 }
 } else {
-  echo "Invalid username or password";
+  echo "Invalid username or password <br>";
+  echo "<a href='login.html'>Return to Sign in</a>";
 }
 
 ?>

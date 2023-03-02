@@ -103,9 +103,8 @@ $last_name = $_SESSION['last_name'];
                     </div>
                 </form>
             </div>
-
-
         </div>
+        <br><br><br></br></br>
 
         <div id="latab" class="container">
             <div>

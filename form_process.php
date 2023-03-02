@@ -7,8 +7,8 @@ $user = $_POST['user'];
 $psw = $_POST['password'];
 // $hashed_password = password_hash($psw, PASSWORD_BCRYPT);
 
-// include("connection.php");
-include_once('connection_lamp.php');
+include("connection.php");
+// include_once('connection_lamp.php');
 // // Establish a connection to the database
 // $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
