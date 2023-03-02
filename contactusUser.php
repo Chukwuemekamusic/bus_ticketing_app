@@ -32,9 +32,8 @@ $last_name = $_SESSION['last_name'];
                 <div class="col-md-10">
                 <nav>
                     <ul class="nav justify-content-end">
-                        <li><a href = "homeUser.php" class="nav-item" >Home</a></li>
+                    <li><a href = "profile.php" class="nav-item">My Account</a></li>
                         <li><a href = "aboutUser.php" class="nav-item">About Us</a></li>
-                        <li><a href = "profile.php" class="nav-item">My Account</a></li>   
                             <li><p>
         Hello <?php print $first_name; ?>!        
     </p></li>
