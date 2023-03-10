@@ -1,8 +1,6 @@
 <?php
 
-// $email = $_POST['email'];
-// $psw = $_POST['psw'];
-// $hashed_password = password_hash($psw, PASSWORD_BCRYPT);
+
 
 // $servername = "localhost";
 $servername = "lamp-database";
