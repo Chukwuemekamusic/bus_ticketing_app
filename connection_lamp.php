@@ -1,16 +1,14 @@
 <?php
 
-// $email = $_POST['email'];
-// $psw = $_POST['psw'];
-// $hashed_password = password_hash($psw, PASSWORD_BCRYPT);
+
 
 // $servername = "localhost";
-$servername = "lamp-database";
+$servername = "lamp-mysql8";
 $username = "root";
 // $password = "root";
 $password = "tiger";
-// $dbname = "BusApp";
-$dbname = "docker";
+$dbname = "BusApp";
+
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
