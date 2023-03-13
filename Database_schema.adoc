@@ -1,0 +1,35 @@
+= Bus Booking Ticket System
+
+== Database Schema Report
+This report outlines the database schema for the bus ticket booking system. The schema includes tables for bus schedules, bus seats, and users.
+
+=== Bus Schedules Table
+
+The bus_schedules table contains information about the bus schedules, including the departure location, arrival location, departure date and time, arrival date and time, bus capacity, seats booked, seats available, bus number, and ticket price. It has a unique index on the combination of bus_number and departure_time columns. There is also an event scheduler that updates the trip_status column to 'closed' when either the departure date has passed or when the seats_remaining is zero. Additionally, there is a trigger that updates the seats_booked column when a seat is booked.
+
+=== Bus Seats Table
+
+The bus_seats table contains information about the seats on each bus, including the seat number and status (available, booked, or reserved). It has a foreign key to the bus_schedules table, which ensures that the seat information is linked to the correct bus schedule. There is also a trigger that updates the seats_booked column in the bus_schedules table when a seat is booked.
+
+=== CSV files
+
+The clean_bus_schedules.csv contains the bus_schedules used in populating the database.\
+The bus_routes.csv contains the unique bus_routes.
+
+=== Functionality
+
+The Bus Ticket Booking System should have the following functionality with this schema: 
+
+* Store bus schedules with details such as departure and arrival locations, departure and arrival dates/times, bus capacity, and ticket price.
+* Automatically calculate and update the number of available seats on each bus based on the number of seats booked.
+* Allow customers to book seats on a bus and update the seat status to "booked" or "reserved" accordingly.
+* Automatically update the trip status of a bus to "closed" when the departure date has passed or when all seats have been booked.
+* Prevent double-booking of seats by using a "reserved" status for seats that have been selected but not yet paid for.
+* Automatically update the seat status and number of seats booked accordingly.
+* Allow for the deletion of entire bus schedules and automatically delete the associated bus seats accordingly.
+* Design the database to ensure data integrity and prevent data redundancy.
+* Scale the database to accommodate future growth of the system.
+
+=== Conclusion
+
+Overall, the database schema provides a solid foundation for a bus ticket booking system. The bus_schedules table contains all the necessary information about the bus schedules, and the bus_seats table tracks the availability of each seat. The event scheduler and trigger ensure that the data in the database is up-to-date and accurate. With some minor modifications, this schema can be used to build a fully functional bus ticket booking system.
