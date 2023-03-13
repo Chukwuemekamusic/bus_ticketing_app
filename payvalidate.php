@@ -30,6 +30,13 @@ class Card_validator {
         return true;
     }
 
+    public function is_valid_month() {
+        if (($this->expiry_month) < 1 || ($this->expiry_month) > 12 ) {
+            return false;
+        }
+        return true;
+    }
+
     public function is_valid_expiry_date() {
         if (!is_numeric($this->expiry_month) || !is_numeric($this->expiry_year)) {
             return false;
@@ -43,7 +50,7 @@ class Card_validator {
     }
 
     public function is_valid() {
-        if ($this->is_valid_card_number() && $this->is_valid_expiry_date() && $this->is_valid_cvv()) {
+        if ($this->is_valid_card_number() && $this->is_valid_expiry_date() && $this->is_valid_cvv() && $this->is_valid_month()) {
             return true;
         }
         return false;
