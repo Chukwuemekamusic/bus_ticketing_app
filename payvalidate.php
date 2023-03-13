@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validator = new Card_validator();
     if ($validator->is_valid()) {
         echo "<p>Credit card number is valid and Approved.. Please proceed.</p>";
-        // header("Location: bookingconfirmation.html"); //send user confirmation page
+        // header("Location: bookingconfirmation.html"); //send user to confirmation page
 
     } else {
         echo "<p>Credit card number is invalid.. Please return to <a href='payment.html'>Payment page</a> input correct details</p>";
