@@ -1,14 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="table-container">
 <?php 
     $seat_array = range(1,40);
 
-
-
-    $count = 0;
     echo '<table>';
+    echo '<tr>
+    <th class="selected">Selected Seat</th>
+    <th class="available">Available Seat</th>
+    <th class="booked">Booked Seat</th>
+    </tr>';
+    echo '</table>';
+    
+    $count = 0;
+    echo '<form method="POST">';
+    echo '<table>';
+    
+    
     echo '<tr>
         <td colspan="4"></td>
         <td>
-            <a href="https://www.flaticon.com/free-icons/steering-wheel" title="steering wheel icons">Steering wheel icons created by deemakdaksina - Flaticon</a></>
+            <img src="steeringwheel2.jpg" alt="steering wheel icon" height="50px">
         </td>
     </tr>';
 
@@ -27,7 +49,7 @@
             echo '&nbsp; </td><td>';
             $count++;
         }
-        echo "<button style='background-color: green; width: 50px;' value='$seat';>$seat</button>";
+        echo "<button type='submit' style='background-color: lightblue; width: 60px; height: 40px; cursor: pointer;' value='$seat'; name='seat'>$seat</button>";
         // class='btn btn-info btn-block'
         echo '</td>';
         $count++;
@@ -36,6 +58,11 @@
     }
     echo '</tr>';
     echo '</table>';
-
+    echo '</form>';
 
 ?>
+</div>
+
+
+</body>
+</html>
