@@ -1,0 +1,43 @@
+
+  CREATE TABLE buses (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  departure_location VARCHAR(30) NOT NULL,
+  arrival_location VARCHAR(30) NOT NULL,
+  travel_date DATE NOT NULL,
+  departure_time TIME NOT NULL,
+  arrival_time TIME NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  available_seats INT(6) NOT NULL
+);
+
+INSERT INTO buses (departure_location, arrival_location, travel_date, departure_time, arrival_time, price, available_seats)
+VALUES ('London', 'Manchester', '2023-05-01', '10:00', '12:30', 20.50, 30),
+       ('Manchester', 'London', '2023-05-01', '13:00', '15:30', 18.75, 25),
+       ('Birmingham', 'Liverpool', '2023-05-01', '09:00', '11:00', 12.00, 10),
+       ('Liverpool', 'Birmingham', '2023-05-01', '14:00', '16:00', 10.50, 5),
+       ('Glasgow', 'Edinburgh', '2023-05-01', '11:00', '12:00', 8.50, 20),
+       ('Edinburgh', 'Glasgow', '2023-05-01', '14:00', '15:00', 7.75, 15),
+       ('Belfast', 'Dublin', '2023-05-01', '10:30', '12:00', 15.00, 12),
+       ('Dublin', 'Belfast', '2023-05-01', '14:30', '16:00', 13.50, 8),
+       ('Newcastle', 'Leeds', '2023-05-01', '09:30', '11:30', 10.00, 18),
+       ('Leeds', 'Newcastle', '2023-05-01', '14:30', '16:30', 9.25, 16),
+       ('Cardiff', 'Bristol', '2023-05-01', '11:30', '13:30', 12.50, 22),
+       ('Bristol', 'Cardiff', '2023-05-01', '14:30', '16:30', 11.75, 20),
+       ('Southampton', 'Portsmouth', '2023-05-01', '12:00', '13:00', 6.50, 14),
+       ('Portsmouth', 'Southampton', '2023-05-01', '14:00', '15:00', 5.75, 12),
+       ('Sheffield', 'Nottingham', '2023-05-01', '10:30', '12:00', 9.50, 26),
+       ('Nottingham', 'Sheffield', '2023-05-01', '13:30', '15:00', 8.75, 24),
+       ('Cambridge', 'Norwich', '2023-05-01', '11:00', '12:30', 7.50, 30),
+       ('Norwich', 'Cambridge', '2023-05-01', '14:00', '15:30', 6.75, 28),
+       ('Plymouth', 'Exeter', '2023-05-01', '12:30', '13:30', 10.00, 16),
+       ('Exeter', 'Plymouth', '2023-05-01', '14:30', '15:30', 9.25, 14),
+       ('Bristol', 'Leeds', '2023-04-15', '07:00:00', '14:30:00', 40.00, 20),
+       ('Leeds', 'Bristol', '2023-04-15', '09:00:00', '16:30:00', 40.00, 18),
+       ('Edinburgh', 'Southampton', '2023-04-15', '06:30:00', '13:30:00', 60.00, 25),
+       ('Southampton', 'Edinburgh', '2023-04-15', '09:00:00', '16:00:00', 60.00, 22),
+       ('Manchester', 'Glasgow', '2023-04-15', '08:00:00', '12:00:00', 35.00, 15),
+       ('Glasgow', 'Manchester', '2023-04-15', '10:00:00', '14:00:00', 35.00, 12),
+       ('London', 'Liverpool', '2023-04-15', '07:30:00', '11:00:00', 25.00, 30),
+       ('Liverpool', 'London', '2023-04-15', '09:30:00', '13:00:00', 25.00, 28),
+       ('Belfast', 'Cardiff', '2023-04-15', '06:00:00', '14:00:00', 70.00, 10),
+       ('Cardiff', 'Belfast', '2023-04-15', '08:00:00', '16:00:00', 70.00, 8);
