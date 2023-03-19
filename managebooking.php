@@ -32,8 +32,8 @@ $last_name = $_SESSION['last_name'];
                     <nav>
                         <ul class="nav justify-content-end">
                         <li><a href="profile.php">My Account</a></li> 
-                        <li><a href = "aboutUser.php" class="nav-item">About Us</a></li>
-                            <li><a href = "contactusUser.php" class="nav-item">Contact Us</a></li> 
+                        <li><a href = "about.php" class="nav-item">About Us</a></li>
+                            <li><a href = "contactus.php" class="nav-item">Contact Us</a></li> 
                             <li><p>
         Hello <?php print $first_name; ?>!        
     </p></li>
@@ -73,7 +73,7 @@ $last_name = $_SESSION['last_name'];
                     </section>
                     <section class="col-md-3">
                         <h4>Quick Guide</h4>
-                        <p><a href="faqUser.php">Frequently Asked Question</a></p>      
+                        <p><a href="faq.php">Frequently Asked Question</a></p>      
                     </section>
                 </div>  
             </div>
