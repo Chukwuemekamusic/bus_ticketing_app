@@ -5,6 +5,7 @@ if (!IsSet($_SESSION["email"])){ //user must in session to stay here
 $email=$_SESSION["email"];   //get user email into the variable $email
 $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first name
 $last_name = $_SESSION['last_name'];
+
 ?>
 
 <!DOCTYPE html>
