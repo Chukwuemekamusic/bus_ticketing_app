@@ -131,7 +131,7 @@ We are an awarding wining Team ,that has been for over five decades, and we cont
                     </section>
                     <section class="col-md-3">
                         <h4>Quick Guide</h4>
-                        <p><a href="faqUser.php">Frequently Asked Question</a></p>      
+                        <p><a href="faq.php">Frequently Asked Question</a></p>      
                     </section>
                 </div>  
             </div>
