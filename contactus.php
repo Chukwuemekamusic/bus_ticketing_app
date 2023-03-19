@@ -37,11 +37,9 @@ $last_name = $_SESSION['last_name'];
                         <li><a href = "about.php" class="nav-item">About Us</a></li>
                         <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
 
-                        <li><?php if(isset($_SESSION['email'])) { ?>
-                            <p>
+                        <li><p>
         Hello <?php print $first_name; ?>!        
-    </p>
-<?php } ?></li>                    
+    </p></li>                    
     <li><a href="logout.php">Logout</a></li> 
     <?php } else { ?>
         <li><a href = "home.html" class="nav-item active">Home</a></li>
