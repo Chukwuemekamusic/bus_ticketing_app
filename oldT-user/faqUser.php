@@ -100,10 +100,6 @@ $last_name = $_SESSION['last_name'];
                             </section>
                             <section class="col-md-6">
                             </section>
-                            <section class="col-md-3">
-                        <h4>Quick Guide</h4>
-                        <p><a href="faq.php">Frequently Asked Question</a></p>      
-                    </section>
                         </div>  
                     </div>
                 </div>   
