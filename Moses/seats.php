@@ -4,7 +4,7 @@ include('../connection.php');
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
 // $busID = $_POST['id'];
 $busID = 530;
-
+$_SESSION['bus_id'] = $busID;
 $sql = "SELECT * FROM bus_schedules b, bus_seats bs
         WHERE b.bus_schedule_id = bs.bus_schedule_id
         AND b.bus_schedule_id = ?";
@@ -45,10 +45,10 @@ if (!$stmt) {
 <body>
     <header class="text-center">
         <h1>Seat Reservation</h1>
-        <p><? echo "{$buses[0]['departure']} to {$buses[0]['arrival']}"; ?></p>
-        <p><? echo "Departure: {$buses[0]['departure_date']} {$buses[0]['departure_time']} "; ?></p>
-        <p><? echo "Arrival: {$buses[0]['arrival_date']} {$buses[0]['arrival_time']} "; ?></p>
-        <p><? echo "Ticket price: £{$buses[0]['ticket_price']}"; ?></p>
+        <h5><? echo "{$buses[0]['departure']} to {$buses[0]['arrival']}"; ?></h5>
+        <h5><? echo "Departure: {$buses[0]['departure_date']} {$buses[0]['departure_time']} "; ?></h5>
+        <h5><? echo "Arrival: {$buses[0]['arrival_date']} {$buses[0]['arrival_time']} "; ?></h5>
+        <h5><? echo "Ticket price: £{$buses[0]['ticket_price']}"; ?></h5>
 
     </header>
 
