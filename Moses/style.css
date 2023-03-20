@@ -1,12 +1,16 @@
 
 
-.table-container {
-    margin: 0 auto; /* This centers the div horizontally */
-    text-align: center; /* This centers the table within the div */
-    position: absolute; /* This positions the div relative to the page */
-    top: 50%; /* This centers the div vertically */
-    left: 50%; /* This centers the div horizontally */
-    transform: translate(-50%, -50%); /* This adjusts the centering */
+.table-arrang {
+    margin: 0 auto; 
+    /* This centers the div horizontally */
+    text-align: center; 
+    /* This centers the table within the div */
+    position: absolute; 
+    /* This positions the div relative to the page */
+    /* top: 50%; /* This centers the div vertically */
+    left: 40%; 
+    /* This centers the div horizontally */
+    /* transform: translate(-50%, -50%); This adjusts the centering */ */
 }
 
 th.selected {

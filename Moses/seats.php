@@ -3,7 +3,7 @@ session_start();
 include('../connection.php');
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
 // $busID = $_POST['id'];
-$busID = 530;
+$busID = 54;
 $_SESSION['bus_id'] = $busID;
 $sql = "SELECT * FROM bus_schedules b, bus_seats bs
         WHERE b.bus_schedule_id = bs.bus_schedule_id
@@ -19,11 +19,11 @@ if (!$stmt) {
     $stmt->bind_param("i", $busID);
     $stmt->execute();
     $result = $stmt->get_result();
-    $buses = [];
-    while ($row = $result->fetch_assoc()) {
-        $buses[] = $row;
-    }
-    // $buses = $result->fetch_all(MYSQLI_ASSOC); alternative way to assign the $buses;
+    // $buses = [];
+    // while ($row = $result->fetch_assoc()) {
+    //     $buses[] = $row;
+    // }
+    $buses = $result->fetch_all(MYSQLI_ASSOC); //alternative way to assign the $buses;
 }
 
 ?>
@@ -45,30 +45,20 @@ if (!$stmt) {
 <body>
     <header class="text-center">
         <h1>Seat Reservation</h1>
-        <h5><? echo "{$buses[0]['departure']} to {$buses[0]['arrival']}"; ?></h5>
-        <h5><? echo "Departure: {$buses[0]['departure_date']} {$buses[0]['departure_time']} "; ?></h5>
-        <h5><? echo "Arrival: {$buses[0]['arrival_date']} {$buses[0]['arrival_time']} "; ?></h5>
-        <h5><? echo "Ticket price: £{$buses[0]['ticket_price']}"; ?></h5>
+        <h5><?php echo "{$buses[0]['departure']} to {$buses[0]['arrival']}"; ?></h5>
+        <h5><?php echo "Departure: {$buses[0]['departure_date']} {$buses[0]['departure_time']} "; ?></h5>
+        <h5><?php echo "Arrival: {$buses[0]['arrival_date']} {$buses[0]['arrival_time']} "; ?></h5>
+        <h5><?php echo "Ticket price: £{$buses[0]['ticket_price']}"; ?></h5>
 
     </header>
 
 
 
-    <div class="table-container mt-5">
-        <?
-        // Check if the returndate parameter is set
-        if (isset($_SESSION['returndate'])) {
-            // Set the form action to the URL for selecting a return bus and seat
-            $form_action = 'select_return_journey.php';     // name of the search return bus page
-        } else {
-            // Set the form action to the URL for selecting a bus and seat
-            $form_action = "./submit_seat_selection.php";
-        }
-
-        ?>
+    <div class="table-responsive mx-auto mt-4 mb-4">
+        <!--  -->
         <!-- <form action="" id="submit_seat_selection"></form> -->
 
-        <table>
+        <table class="mx-auto mb-3">
             <tr>
                 <th class="selected">Selected Seat</th>
                 <th class="available">Available Seat</th>
@@ -88,18 +78,18 @@ if (!$stmt) {
         ?>
         <form id="submit_seat_selection" method="post" action="<?php echo $form_action; ?>">
         <?
-        $count = 0;
-        echo '<table>';
-
-
-        echo '<tr>
+        
+        ?>
+        <table class="mx-auto">
+        <tr>
         <td colspan="4"></td>
         <td>
             <img src="steeringwheel2.jpg" alt="steering wheel icon" height="50px">
         </td>
-        </tr>';
-
-        echo '<tr>';
+    </tr>
+    <tr>
+        <?php
+        $count = 0;
         foreach ($buses as $bus) {
             $seat_number = $bus['seat_number'];
             if ($count % 5 == 0 && $count != 0) {
@@ -127,11 +117,13 @@ if (!$stmt) {
             echo '</td>';
             $count++;
         }
-        echo '</tr>';
-        echo '</table>'; ?>
+        ?>
+    </tr>
+</table>
+
 
         <input type="hidden" id="selected-seat-input" name="selected_seat" value="">
-        <button class="btn btn-primary mt-2" type="submit" id="submit-seat-btn" style="display: none;">Continue</button>
+        <button class="btn btn-primary mx-auto mt-2" type="submit" id="submit-seat-btn" style="display: none;">Continue</button>
         </form>
     </div>
 
