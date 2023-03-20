@@ -26,9 +26,9 @@ AFTER UPDATE ON bus_seats
 FOR EACH ROW
 BEGIN
   IF NEW.status = 'booked' THEN
-    UPDATE bus_schedules SET seats_booked = seats_booked + 1 WHERE bus_schedules_id = NEW.bus_schedule_id;
-    IF (SELECT seats_booked FROM bus_schedules WHERE bus_schedules_id = NEW.bus_schedule_id) = 40 THEN
-      UPDATE bus_schedules SET trip_status = 'closed' WHERE bus_schedules_id = NEW.bus_schedule_id;
+    UPDATE bus_schedules SET seats_booked = seats_booked + 1 WHERE bus_schedule_id = NEW.bus_schedule_id;
+    IF (SELECT seats_booked FROM bus_schedules WHERE bus_schedule_id = NEW.bus_schedule_id) = 40 THEN
+      UPDATE bus_schedules SET trip_status = 'closed' WHERE bus_schedule_id = NEW.bus_schedule_id;
     END IF;
   END IF;
 END";

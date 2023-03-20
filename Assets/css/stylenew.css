@@ -232,3 +232,54 @@ form label {
     font-size: 24px;
     margin-bottom: 20px;
   }
+
+  /* seat reservation */
+  .table-container {
+    margin: 0 auto; /* This centers the div horizontally */
+    text-align: center; /* This centers the table within the div */
+    position: absolute; /* This positions the div relative to the page */
+    top: 50%; /* This centers the div vertically */
+    left: 50%; /* This centers the div horizontally */
+    transform: translate(-50%, -50%); /* This adjusts the centering */
+}
+
+th.selected {
+    background-color: lightgreen;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+th.available {
+    background-color: lightblue;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+th.booked {
+    background-color: red;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.seat-button {
+  background-color: lightblue; 
+  width: 60px; height: 40px;
+  border-radius: 10px;
+}
+#seat-button-booked {
+    background-color: red !important;
+    width: 60px; height: 40px;
+    border-radius: 10px;
+}
+
+/* change color of highlighted seat button */
+.seat-button.selected {
+    background-color: lightgreen;
+    color: red;
+    font-weight: bold;
+  }
+  
