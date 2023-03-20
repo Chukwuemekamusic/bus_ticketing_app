@@ -1,10 +1,11 @@
 <?php
 session_start();    //create or retrieve session
-if (!IsSet($_SESSION["email"])){ //user must in session to stay here
-   header("Location: login.php"); }  //if not, go back to login page
+if (IsSet($_SESSION["email"])){ //user must in session to stay here
 $email=$_SESSION["email"];   //get user email into the variable $email
 $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first name
 $last_name = $_SESSION['last_name'];
+
+} 
 ?>
 
 <!DOCTYPE html>
@@ -32,14 +33,21 @@ $last_name = $_SESSION['last_name'];
             
                 <div class="col-md-10">
                 <nav>
-                    <ul class="nav justify-content-end">
-                    <li><a href = "profile.php" class="nav-item">My Account</a></li>
-                            <li><a href = "contactusUser.php" class="nav-item">Contact Us</a></li>  
-                        <li><p>
-        Hello <?php print $first_name; ?>!        
-    </p></li>
-    <li><a href="logout.php">Logout</a></li>  
-    </ul>
+                <ul class="nav justify-content-end">
+                            <?php if (isset($_SESSION["email"])) { ?>
+                                <li><a href = "profile.php" class="nav-item">My Account</a></li>
+                        <li><a href = "about.php" class="nav-item">About Us</a></li>
+                        <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
+                        <li><p> Hello <?php print $first_name; ?>! </p></li>      
+    <li><a href="logout.php">Logout</a></li> 
+    <?php } else { ?>
+        <li><a href = "home.html" class="nav-item active">Home</a></li>
+                            <li><a href = "about.php" class="nav-item">About Us</a></li>
+                            <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
+                            <li><a href = "login.html" class="nav-item">Sign-in|Sign up</a></li>  
+    <?php } ?>
+
+                    </ul>
                 </nav>
                 </div>
             </div>    
@@ -113,7 +121,7 @@ We are an awarding wining Team ,that has been for over five decades, and we cont
                     </section>
                     <section class="col-md-3">
                         <h4>Quick Guide</h4>
-                        <p><a href="faqUser.php">Frequently Asked Question</a></p>      
+                        <p><a href="faq.php">Frequently Asked Question</a></p>      
                     </section>
                 </div>  
             </div>
