@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,34 +46,37 @@
 			<?php
 
                 // Connect to the database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bus_database";
-				// replace this with your own database connection code
-				$db_connection = mysqli_connect($servername, $username, $password, $dbname);
+                include_once('./connection.php');
 				
 				// replace these variables with the user input from the search form
-				$departure_location = $_POST['departure'];
+				$departure_location = $_POST['departure'];				
 				$arrival_location = $_POST['arrival'];
-				$travel_date = $_POST['date'];
+				$travel_date = $_POST['departuredate'];
+				$search_returndate = $_POST['returndate'] ?? null;
+
+				//store returndate in as session
+				if ($search_returndate) {
+					$_SESSION['returndate'] = $search_returndate;
+				}
 				
 				// perform the search query
-				$search_query = "SELECT * FROM buses WHERE departure_location = '$departure_location' AND arrival_location = '$arrival_location' AND travel_date = '$travel_date'";
-				$search_result = mysqli_query($db_connection, $search_query);
+				$search_query = "SELECT * FROM bus_schedules WHERE departure = '$departure_location' AND arrival = '$arrival_location' AND departure_date = '$travel_date'";
+				$search_result = mysqli_query($conn, $search_query);
 				
 				// output the search results as table rows
 				while ($row = mysqli_fetch_assoc($search_result)) {
 					echo "<tr>";
-					echo "<td>" . $row['departure_location'] . "</td>";
-					echo "<td>" . $row['arrival_location'] . "</td>";
-					echo "<td>" . $row['travel_date'] . "</td>";
+					echo "<td>" . $row['departure'] . "</td>";
+					echo "<td>" . $row['arrival'] . "</td>";
+					echo "<td>" . $row['departure_date'] . "</td>";
 					echo "<td>" . $row['departure_time'] . "</td>";
 					echo "<td>" . $row['arrival_time'] . "</td>";
-					echo "<td>£" . $row['price'] . "</td>";
-					echo "<td>" . $row['available_seats'] . "</td>";
-					echo "<td><form action='payment.php'><input type='hidden' name='bus_id' value='" . $row['id'] . "'><input type='submit' value='Select'></form></td>";
+					echo "<td>£" . $row['ticket_price'] . "</td>";
+					echo "<td>" . $row['seats_available'] . "</td>";
+					echo "<td><form action='./Moses/seats.php' method='post'><input type='hidden' name='bus_id' value='" . $row['bus_schedule_id'] . "'><input type='submit' value='Select'></form></td>";
 					echo "</tr>";
+
+
 				}
 			?>
 		</tbody>

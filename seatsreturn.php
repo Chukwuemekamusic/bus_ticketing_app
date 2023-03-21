@@ -1,17 +1,16 @@
 <?php
 session_start();
 include('../connection.php');
-if ($_SERVER['REQUEST_METHOD'] != "POST") {
-    echo 'message not sent!';
+if ($_SERVER['REQUEST_METHOD'] != "POST") { 
+    echo 'nothing sent';
     exit;
 }
-$busID = $_POST['bus_id'];
+$return_busID = $_POST['id'];
+// $return_busID = 554;
+$_SESSION['return_bus_id'] = $return_busID;
 
-$_SESSION['bus_id'] = $busID;
 include('../get_bus_details.php');
-$buses = getBuses($busID);
-$_SESSION['departure'] = $buses[0]['departure'];
-$_SESSION['arrival'] = $buses[0]['arrival'];
+$buses = getBuses($return_busID);
 
 ?>
 
@@ -54,16 +53,16 @@ $_SESSION['arrival'] = $buses[0]['arrival'];
 
         </table>
         <?php
-        // Check if the returndate parameter is set
-        if (isset($_SESSION['returndate'])) {
-        // Set the form action to the URL for selecting a return bus and seat
-        $form_action = 'return_results.php';
-        } else {
-        // Set the form action to the URL for selecting a bus and seat
-        $form_action = "./home.html";
-        }
+        // // Check if the returndate parameter is set
+        // if (isset($_GET['returndate'])) {
+        // // Set the form action to the URL for selecting a return bus and seat
+        // $form_action = 'select_return_journey.php';
+        // } else {
+        // // Set the form action to the URL for selecting a bus and seat
+        // $form_action = "./home.html";
+        // }
         ?>
-        <form id="submit_seat_selection" method="post" action="<?php echo $form_action; ?>">
+        <form id="submit_seat_selection" method="post" action="<?php echo $payment; ?>">
         <?
         
         ?>
