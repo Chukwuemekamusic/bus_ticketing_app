@@ -1,4 +1,7 @@
 <?php
+session_start();
+$first_n = $_POST['first_n'];
+$last_n = $_POST['last_n'];
 
 class Card_validator {
     private $card_number;
@@ -61,11 +64,14 @@ class Card_validator {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validator = new Card_validator();
     if ($validator->is_valid()) {
-        echo "<p>Credit card number is valid and Approved.. Please proceed.</p>";
-        // header("Location: bookingconfirmation.html"); //send user to confirmation page
+        // echo "<p>Credit card number is valid and Approved.. Please proceed.</p>";
+        header("Location: bookingconfirmation.php"); //send user to confirmation page
+        $_SESSION['first_n'] = $first_n;
+        $_SESSION['last_n'] = $last_n;
+        exit();
 
     } else {
-        echo "<p>Credit card number is invalid.. Please return to <a href='payment.php'>Payment page</a> input correct details</p>";
+        echo "<p>Credit card details is invalid.. Please return to <a href='payment.php'>Payment page</a> input correct details</p>";
     }
 }
 ?>

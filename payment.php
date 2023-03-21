@@ -16,6 +16,7 @@ if (isset($_SESSION['returndate'])) {
 }
 $busId =  $_SESSION['bus_id'];
 $price = $_SESSION['price'];
+$totalprice = ($price+$returnPrice);
     
 
 ?>
@@ -100,7 +101,7 @@ $price = $_SESSION['price'];
       </div>
       <br>
       <div class="container text-center">
-        <h3>Amount to Pay: <?php echo '£' .($price+$returnPrice); ?></h3>
+        <h3>Amount to Pay: <?php echo '£' .($totalprice); ?></h3>
         
       </div>
       <form method="post" action="payvalidate.php">
@@ -115,12 +116,12 @@ $price = $_SESSION['price'];
              </div>
              <div class="col-md-6">
                 <label for="first_name" class="form-label"> First Name</label>
-                <input type="text" name="first_name" class="form-control" required>
+                <input type="text" name="first_n" class="form-control" required>
                 
             </div>
                 <div class="col-md-6">
                     <label for="last_name" class="form-label">Last Name</label>
-              <p><input type="text" name="last_name" class="form-control" required></p>
+              <p><input type="text" name="last_n" class="form-control" required></p>
              </div>
           </div>
 
