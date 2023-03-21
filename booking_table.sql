@@ -30,6 +30,6 @@ CREATE TABLE bookings (
     one_departure VARCHAR(30) NOT NULL,
     one_arrival VARCHAR(30) NOT NULL,
     one_bus_number VARCHAR(30) NOT NULL,
-    one_ticket_price DECIMAL(10,2) NOT NULL DEFAULT 60.45,
+    one_ticket_price DECIMAL(10,2) NOT NULL,
     total_paid DECIMAL(10,2) NOT NULL
     );
