@@ -56,7 +56,7 @@ $last_name = $_SESSION['last_name'];
         </div>
 
     </header>
-    <main class=>
+    <main>
         <h1 style="text-align: center;">Customer Feedback</h1>
             <p style="text-align: center;">Please get in touch with us. We'll contact you as soon as we can after you complete the form below.
             </p>
