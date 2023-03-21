@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../connection.php');
-$seat_number = $_POST['seat_number'];
+$seat_number =  $_POST['seat_number'];
 $status = $_POST['status'];
 $busID = $_SESSION['bus_id'];
 
@@ -14,5 +14,7 @@ $stmt->execute();
 // Handle errors if necessary
 if (!$stmt) {
     echo "Error: ". $conn->error;
+}else {
+    echo 'done!!!';
 }
 ?>

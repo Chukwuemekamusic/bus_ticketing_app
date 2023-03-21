@@ -3,28 +3,11 @@ session_start();
 include('../connection.php');
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
 // $busID = $_POST['id'];
-$busID = 54;
+$busID = 554;
 $_SESSION['bus_id'] = $busID;
-$sql = "SELECT * FROM bus_schedules b, bus_seats bs
-        WHERE b.bus_schedule_id = bs.bus_schedule_id
-        AND b.bus_schedule_id = ?";
+include('../get_bus_details.php');
+$buses = getBuses($busID);
 
-$stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    // handle the error
-    echo 'statement failed!!!';
-    echo "Error: " . $conn->error;
-} else {
-    $stmt->bind_param("i", $busID);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    // $buses = [];
-    // while ($row = $result->fetch_assoc()) {
-    //     $buses[] = $row;
-    // }
-    $buses = $result->fetch_all(MYSQLI_ASSOC); //alternative way to assign the $buses;
-}
 
 ?>
 
@@ -73,7 +56,7 @@ if (!$stmt) {
         $form_action = 'select_return_journey.php';
         } else {
         // Set the form action to the URL for selecting a bus and seat
-        $form_action = "home.html";
+        $form_action = "./home.html";
         }
         ?>
         <form id="submit_seat_selection" method="post" action="<?php echo $form_action; ?>">
@@ -128,8 +111,10 @@ if (!$stmt) {
     </div>
 
     <!-- #TODO add the cancel button -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- <script src="./tutorial/js/jquery-3.5.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/8c47bf12e3.js" crossorigin="anonymous"></script>
