@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../connection.php');
+include('./connection.php');
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     echo 'message not sent!';
     exit;
@@ -8,10 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
 $busID = $_POST['bus_id'];
 
 $_SESSION['bus_id'] = $busID;
-include('../get_bus_details.php');
+include('./get_bus_details.php');
 $buses = getBuses($busID);
 $_SESSION['departure'] = $buses[0]['departure'];
 $_SESSION['arrival'] = $buses[0]['arrival'];
+$_SESSION['price'] = $buses[0]['ticket_price'];
 
 ?>
 
@@ -25,7 +26,7 @@ $_SESSION['arrival'] = $buses[0]['arrival'];
     <title>Seat Reservation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Assets/css/stylenew.css">
     <script src="./seats.js"></script>
 </head>
 
@@ -57,10 +58,10 @@ $_SESSION['arrival'] = $buses[0]['arrival'];
         // Check if the returndate parameter is set
         if (isset($_SESSION['returndate'])) {
         // Set the form action to the URL for selecting a return bus and seat
-        $form_action = 'return_results.php';
+        $form_action = './return_result.php';
         } else {
         // Set the form action to the URL for selecting a bus and seat
-        $form_action = "./home.html";
+        $form_action = "./payment.php";
         }
         ?>
         <form id="submit_seat_selection" method="post" action="<?php echo $form_action; ?>">

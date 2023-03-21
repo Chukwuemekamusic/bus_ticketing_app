@@ -1,6 +1,5 @@
-<?php session_start(); 
-session_destroy();
-session_start();?>
+<?php session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,21 +45,21 @@ session_start();?>
 		</thead>
 		<tbody>
 			<?php
-
+            
                 // Connect to the database
                 include_once('./connection.php');
 				
 				// replace these variables with the user input from the search form
-				$departure_location = $_POST['departure'];				
-				$arrival_location = $_POST['arrival'];
-				$travel_date = $_POST['departuredate'];
-				$search_returndate = $_POST['returndate'] ?? null;
+				$departure_location = $_SESSION['arrival'];				
+				$arrival_location = $_SESSION['departure'];
+				$travel_date = $_SESSION['returndate'];
+                $_SESSION['selected_seat'] = $_POST['selected_seat'];
+				
 
 				//store returndate in as session
-				if ($search_returndate) {
-		
-					$_SESSION['returndate'] = $search_returndate;
-				}
+				// if ($search_returndate) {
+					
+				// }
 				
 				// perform the search query
 				$search_query = "SELECT * FROM bus_schedules WHERE departure = '$departure_location' AND arrival = '$arrival_location' AND departure_date = '$travel_date'";
@@ -76,13 +75,20 @@ session_start();?>
 					echo "<td>" . $row['arrival_time'] . "</td>";
 					echo "<td>£" . $row['ticket_price'] . "</td>";
 					echo "<td>" . $row['seats_available'] . "</td>";
-					echo "<td><form action='./seats.php' method='post'><input type='hidden' name='bus_id' value='" . $row['bus_schedule_id'] . "'><input type='submit' value='Select'></form></td>";
+					echo "<td><form action='./seatsreturn.php' method='post'><input type='hidden' name='return_bus_id' value='" . $row['bus_schedule_id'] . "'><input type='submit' value='Select'></form></td>";
 					echo "</tr>";
 
 
 				}
+                // echo $_SESSION['returndate'];
 			?>
+            
 		</tbody>
 	</table>
 </body>
 </html>
+
+<!-- // $_SESSION['selected_seat'] = $_POST['selected_seat'];
+            // $arrival = $_SESSION['departure'];
+            // $departure = $_SESSION['arrival'];
+            // $return_date = $_SESSION['returndate']; -->

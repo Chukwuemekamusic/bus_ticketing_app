@@ -1,16 +1,19 @@
 <?php
 session_start();
-include('../connection.php');
+include_once('./connection.php');
 if ($_SERVER['REQUEST_METHOD'] != "POST") { 
     echo 'nothing sent';
     exit;
 }
-$return_busID = $_POST['id'];
+
+$return_busID = $_POST['return_bus_id'];
 // $return_busID = 554;
 $_SESSION['return_bus_id'] = $return_busID;
 
-include('../get_bus_details.php');
+
+include('./get_bus_details.php');
 $buses = getBuses($return_busID);
+$_SESSION['return_price'] = $buses[0]['ticket_price'];
 
 ?>
 
@@ -24,8 +27,8 @@ $buses = getBuses($return_busID);
     <title>Seat Reservation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="./seats.js"></script>
+    <link rel="stylesheet" href="./Assets/css/stylenew.css">
+    <script src="./seatsreturn.js"></script>
 </head>
 
 <body>
@@ -53,16 +56,9 @@ $buses = getBuses($return_busID);
 
         </table>
         <?php
-        // // Check if the returndate parameter is set
-        // if (isset($_GET['returndate'])) {
-        // // Set the form action to the URL for selecting a return bus and seat
-        // $form_action = 'select_return_journey.php';
-        // } else {
-        // // Set the form action to the URL for selecting a bus and seat
-        // $form_action = "./home.html";
-        // }
+        
         ?>
-        <form id="submit_seat_selection" method="post" action="<?php echo $payment; ?>">
+        <form id="submit_seat_selection" method="post" action="payment.php">
         <?
         
         ?>
@@ -94,7 +90,7 @@ $buses = getBuses($return_busID);
             // determine the path of the form
             
             if ($bus['status'] == 'available') {
-                echo "<button type='button' class='seat-button' name='selected_seat' value='$seat_number';>$seat_number</button>";
+                echo "<button type='button' class='seat-button' name='return_selected_seat' value='$seat_number';>$seat_number</button>";
             } else if ($bus['status'] != 'available'){
                 // echo "<button class='seat-button-booked' type='button' name='booked_seat' value='$seat_number';>" . $seat_number . "</button>";
                 echo "<button type='button' class='seat-button-booked' style='background-color: red; width: 60px; height: 40px; border-radius: 10px;' name='selected_seat' value='$seat_number';>$seat_number</button>";
@@ -107,8 +103,8 @@ $buses = getBuses($return_busID);
     </tr>
 </table>
 
-
-        <input type="hidden" id="selected-seat-input" name="selected_seat" value="">
+        
+        <input type="hidden" id="selected-seat-input" name="return_selected_seat" value="">
         <button class="btn btn-primary mx-auto mt-2" type="submit" id="submit-seat-btn" style="display: none;">Continue</button>
         </form>
     </div>

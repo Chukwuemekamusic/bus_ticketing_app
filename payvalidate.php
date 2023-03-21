@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // header("Location: bookingconfirmation.html"); //send user to confirmation page
 
     } else {
-        echo "<p>Credit card number is invalid.. Please return to <a href='payment.html'>Payment page</a> input correct details</p>";
+        echo "<p>Credit card number is invalid.. Please return to <a href='payment.php'>Payment page</a> input correct details</p>";
     }
 }
 ?>

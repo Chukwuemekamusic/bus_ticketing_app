@@ -4,8 +4,20 @@ if (IsSet($_SESSION["email"])){ //user must in session to stay here
 $email=$_SESSION["email"];   //get user email into the variable $email
 $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first name
 $last_name = $_SESSION['last_name'];
+}
+$returnPrice = $_SESSION['return_price'] ?? 0;
+if (isset($_SESSION['returndate'])) {
+    $returnBusId =  $_SESSION['return_bus_id'];
+    
+    $returnSeat = $_POST['return_selected_seat'];
+    $seat = $_SESSION['selected_seat'];
+}else {
+    $seat = $_POST['selected_seat'];
+}
+$busId =  $_SESSION['bus_id'];
+$price = $_SESSION['price'];
+    
 
-} 
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,7 +44,13 @@ $last_name = $_SESSION['last_name'];
                 <div class="col-md-10">
                 <nav>
                 <ul class="nav justify-content-end">
-                            <?php if (isset($_SESSION["email"])) { ?>
+                            <?php 
+                            // echo $_SESSION['price'] . "<br>";
+                            // echo  . "<br>";
+                            // echo $_SESSION['bus_id'] . "<br>";
+                            // echo . "<br>";
+                            // echo $_SESSION['selected_seat'];
+                            if (isset($_SESSION["email"])) { ?>
                                 <li><a href = "profile.php" class="nav-item">My Account</a></li>
                         <li><a href = "about.php" class="nav-item">About Us</a></li>
                         <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
@@ -81,9 +99,14 @@ $last_name = $_SESSION['last_name'];
       <label for="paypal">Paypal</label> -->
       </div>
       <br>
+      <div class="container text-center">
+        <h3>Amount to Pay: <?php echo '£' .($price+$returnPrice); ?></h3>
+        
+      </div>
       <form method="post" action="payvalidate.php">
       <div class="row">
           <div class="col-md-6">
+         
             <label for="cardholder" class="form-label"> Cardholder Name </label>
              <input type="text" class="form-control">
              <small class="text">Name as displayed on Card</small>
@@ -97,7 +120,7 @@ $last_name = $_SESSION['last_name'];
             </div>
                 <div class="col-md-6">
                     <label for="last_name" class="form-label">Last Name</label>
-              <p><input type="text" name="last_name" class="form-control" required</p>
+              <p><input type="text" name="last_name" class="form-control" required></p>
              </div>
           </div>
 

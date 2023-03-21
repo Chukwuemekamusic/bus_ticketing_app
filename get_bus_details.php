@@ -1,6 +1,6 @@
 <?php
 function getBuses($busID) {
-    include('../connection.php');
+    include('./connection.php');
     $sql = "SELECT * FROM bus_schedules b, bus_seats bs
             WHERE b.bus_schedule_id = bs.bus_schedule_id
             AND b.bus_schedule_id = ?";
