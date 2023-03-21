@@ -6,12 +6,13 @@ $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first
 $last_name = $_SESSION['last_name'];
 }
 $returnPrice = $_SESSION['return_price'] ?? 0;
-if (isset($_SESSION['returndate'])) {
+if (isset($_SESSION['returndate']) && strpos($_SERVER['HTTP_REFERER'], 'seatsreturn.php' !== false)) {
     $returnBusId =  $_SESSION['return_bus_id'];
     
     $returnSeat = $_POST['return_selected_seat'];
+    $_SESSION['return_seat'] = $returnSeat;
     $seat = $_SESSION['selected_seat'];
-}else {
+}else if (strpos($_SERVER['HTTP_REFERER'], 'seats.php' !== false)) {
     $seat = $_POST['selected_seat'];
 }
 $busId =  $_SESSION['bus_id'];
