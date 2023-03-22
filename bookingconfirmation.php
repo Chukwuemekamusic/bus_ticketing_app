@@ -294,7 +294,6 @@ $stmt3->close();
         </div>
 
     </footer>
-    
     </div>
 
 
