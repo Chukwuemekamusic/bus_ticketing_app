@@ -13,13 +13,13 @@ $last_n = $_SESSION['last_n'] ?? '';
 $busId =  $_SESSION['bus_id'] ?? '';
 $price = $_SESSION['price'] ?? 0;
 $returnPrice = $_SESSION['return_price'] ?? 0;
-if (isset($_SESSION['returndate'])) {
-    $returnBusId =  $_SESSION['return_bus_id'];    
-    $returnSeat = $_POST['return_selected_seat'] ?? '';
-    $seat = $_SESSION['selected_seat'] ?? '';
-}else {
-    $seat = $_POST['selected_seat'] ?? '';
-}
+$returnSeat = $_POST['return_selected_seat'] ?? '';
+$returnBusId =  $_SESSION['return_bus_id']; 
+
+// if (isset($_SESSION['returndate'])) {
+//     $returnBusId =  $_SESSION['return_bus_id'];    
+// }
+$seat = $_SESSION['selected_seat'] ?? '';
 
 //$totalprice = ($price+$returnPrice);
 
@@ -68,8 +68,8 @@ if (empty($return_arrival_date)) {
 // echo 'Your booking ID is: ' . $one_arrival_date . '<br>';
 
 
-$stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, firstname, lastname, one_departure, one_arrival, one_departure_date, one_departure_time, one_arrival_date, one_arrival_time, one_bus_number, one_ticket_price, return_departure, return_arrival, return_departure_date, return_departure_time, return_arrival_date, return_arrival_time, return_bus_number, return_ticket_price, total_paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt2->bind_param("ssssssssssdsssssssdd", $booking_id, $first_n, $last_n, $one_departure, $one_arrival, $one_departure_date, $one_departure_time, $one_arrival_date, $one_arrival_time, $one_bus_number, $one_ticket_price, $return_departure, $return_arrival, $return_departure_date, $return_departure_time, $return_arrival_date, $return_arrival_time, $return_bus_number, $return_ticket_price, $total_price);
+$stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, firstname, lastname, one_bus_id, one_seat_number, one_departure, one_arrival, one_departure_date, one_departure_time, one_arrival_date, one_arrival_time, one_bus_number, one_ticket_price, return_bus_id, return_seat_number, return_departure, return_arrival, return_departure_date, return_departure_time, return_arrival_date, return_arrival_time, return_bus_number, return_ticket_price, total_paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt2->bind_param("sssiisssssssdiisssssssdd", $booking_id, $first_n, $last_n, $busId, $seat, $one_departure, $one_arrival, $one_departure_date, $one_departure_time, $one_arrival_date, $one_arrival_time, $one_bus_number, $one_ticket_price, $returnBusId, $returnSeat, $return_departure, $return_arrival, $return_departure_date, $return_departure_time, $return_arrival_date, $return_arrival_time, $return_bus_number, $return_ticket_price, $total_price);
 
 //Set the parameters
 // $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
@@ -185,6 +185,7 @@ $stmt3->close();
         <th>one_arrival_date</th>
         <th>one_arrival_time</th>
         <th>one_bus_number</th>
+        <th>one_seat_number</th>
         <th>one_ticket_price</th>
         <th>return_departure</th>
         <th>return_arrival</th>
@@ -193,6 +194,7 @@ $stmt3->close();
         <th>return_arrival_date</th>
         <th>return_arrival_time/th>
         <th>return_bus_number</th>
+        <th>return_seat_number</th>
         <th>return_ticket_price</th>
         <th>Total Paid</th>
 
@@ -209,6 +211,7 @@ $stmt3->close();
                     <td><?php echo $row['one_arrival_date']; ?></td>
                     <td><?php echo $row['one_arrival_time']; ?></td>
                     <td><?php echo $row['one_bus_number']; ?></td>
+                    <td><?php echo $row['one_seat_number']; ?></td>                    
                     <td><?php echo $row['one_ticket_price']; ?></td>
                     <td><?php echo $row['return_departure']; ?></td>
                     <td><?php echo $row['return_arrival']; ?></td>
@@ -217,6 +220,7 @@ $stmt3->close();
                     <td><?php echo $row['return_arrival_date']; ?></td>
                     <td><?php echo $row['return_arrival_time']; ?></td>
                     <td><?php echo $row['return_bus_number']; ?></td>
+                    <td><?php echo $row['return_seat_number']; ?></td>
                     <td><?php echo $row['return_ticket_price']; ?></td>
                     <td><?php echo $row['total_paid']; ?></td>
     </tr>
