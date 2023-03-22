@@ -60,12 +60,9 @@ if (empty($return_arrival_date)) {
     $return_arrival_date = NULL;
 }
 
-// echo 'Your booking ID is: ' . $return_departure . '<br>';
-// echo 'Your booking ID is: ' . $return_arrival_time . '<br>';
+
 // echo 'Your booking ID is: ' . $total_price . '<br>';
 // echo 'Your booking ID is: ' . $first_n . '<br>';
-// echo 'Your booking ID is: ' . $one_bus_number . '<br>';
-// echo 'Your booking ID is: ' . $one_arrival_date . '<br>';
 
 
 $stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, firstname, lastname, one_bus_id, one_seat_number, one_departure, one_arrival, one_departure_date, one_departure_time, one_arrival_date, one_arrival_time, one_bus_number, one_ticket_price, return_bus_id, return_seat_number, return_departure, return_arrival, return_departure_date, return_departure_time, return_arrival_date, return_arrival_time, return_bus_number, return_ticket_price, total_paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -77,7 +74,7 @@ $stmt2->bind_param("sssiisssssssdiisssssssdd", $booking_id, $first_n, $last_n, $
 if (isset($_SESSION["booking_id"])) {
     // Booking ID already generated, display it to the user
     $booking_id = $_SESSION["booking_id"];
-    echo "Your booking ID is: " . $booking_id;
+    // echo "Your booking ID is: " . $booking_id;
 } else {
     // Generate a new booking ID
     $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
@@ -86,7 +83,7 @@ if (isset($_SESSION["booking_id"])) {
     $_SESSION["booking_id"] = $booking_id;
 
     // Display the booking ID to the user
-    echo 'Your booking ID is: ' . $booking_id;
+    // echo 'Your booking ID is: ' . $booking_id;
 }
 
 $stmt2->execute();
