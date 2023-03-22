@@ -90,7 +90,9 @@
 				$arrival_location = $_SESSION['departure'];
 				$travel_date = $_SESSION['returndate'];
                 $_SESSION['selected_seat'] = $_POST['selected_seat'];
-				
+				echo $departure_location .'<br>';
+                echo $arrival_location . '<br>';
+                echo $travel_date;
 
 				//store returndate in as session
 				// if ($search_returndate) {

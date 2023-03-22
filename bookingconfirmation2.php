@@ -13,74 +13,61 @@ $last_n = $_SESSION['last_n'] ?? '';
 $busId =  $_SESSION['bus_id'] ?? '';
 $price = $_SESSION['price'] ?? 0;
 $returnPrice = $_SESSION['return_price'] ?? 0;
-if (isset($_SESSION['returndate'])) {
-    $returnBusId =  $_SESSION['return_bus_id'];    
-    $returnSeat = $_SESSION['return_selected_seat'] ?? '';
-    $seat = $_SESSION['selected_seat'] ?? '';
-}else {
-    $seat = $_POST['selected_seat'] ?? '';
-}
+$returnSeat = $_SESSION['return_selected_seat'] ?? '';
+$returnBusId =  $_SESSION['return_bus_id'] ?? '';
+$seat = $_SESSION['selected_seat'] ?? '';
 
 $totalprice = ($_SESSION['total_price']);
 
 // Connect to the database
 include_once("connection.php");
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
 
 include('./get_bus_details.php');
 $onebus = getBuses($busId);
-$one_departure = $onebus[0]['departure'] ?? '';
-$one_arrival = $onebus[0]['arrival'] ?? '';
-$one_departure_date = $onebus[0]['departure_date'] ?? '';
-$one_departure_time = $onebus[0]['departure_time'] ?? '';
-$one_arrival_date = $onebus[0]['arrival_date'] ?? '';
-$one_arrival_time = $onebus[0]['arrival_time'] ?? '';
-$one_bus_number = $onebus[0]['bus_number'] ?? '';
-$one_ticket_price = $onebus[0]['ticket_price'] ?? '';
 
-$returnbus = getBuses($returnBusId);
-$return_departure = $returnbus[0]['departure'] ?? '';
-$return_arrival = $returnbus[0]['arrival'] ?? '';
-$return_departure_date = $returnbus[0]['departure_date'] ?? '';
-$return_departure_time = $returnbus[0]['departure_time'] ?? '';
-$return_arrival_date = $returnbus[0]['arrival_date'] ?? '';
-$return_arrival_time = $returnbus[0]['arrival_time'] ?? '';
-$return_bus_number = $returnbus[0]['bus_number'] ?? '';
-$return_ticket_price = $returnbus[0]['ticket_price'] ?? '';
+//$returnbus = getBuses($returnBusId);
 
 
-echo 'Your booking ID is: ' . $return_departure . '<br>';
-echo 'Your booking ID is: ' . $return_arrival_time . '<br>';
+
+// echo 'Your booking ID is: ' . $return_departure . '<br>';
+// echo 'Your booking ID is: ' . $return_arrival_time . '<br>';
 echo 'Your booking ID is: ' . $totalprice . '<br>';
 echo 'Your booking ID is: ' . $first_n . '<br>';
-echo 'Your booking ID is: ' . $one_bus_number . '<br>';
-echo 'Your booking ID is: ' . $one_arrival_date . '<br>';
+echo 'bus return id is: ' .$returnBusId . '<br>';
+// echo 'Your booking ID is: ' . $one_bus_number . '<br>';
+// echo 'Your booking ID is: ' . $one_arrival_date . '<br>';
 
-
-
-// // Prepare the SQL query
-// $stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, firstname, lastname, one_departure, one_arrival, one_departure_date, one_departure_time,
-// one_arrival_date, one_arrival_time, one_bus_number, one_ticket_price, return_departure, return_arrival, return_departure_date, return_departure_time,
-// return_arrival_date, return_arrival_time, return_bus_number, return_ticket_price, total_paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-// $stmt2->bind_param("ssssssssssdsssssssdd", $booking_id, $first_n, $last_n, $one_departure, $one_arrival, $one_departure_date, $one_departure_time, $one_arrival_date, $one_arrival_time, $one_bus_number, $one_ticket_price, $return_departure, $return_arrival, $return_departure_date, $return_departure_time, $return_arrival_date, $return_arrival_time, $return_bus_number, $return_ticket_price, $totalprice);
+$booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+$booking_date = date("Y-m-d"); // Get the current date in YYYY-MM-DD format
 
 // Prepare the SQL query
-$stmt2 = $conn->prepare("INSERT INTO bookings5 (booking_id, firstname, lastname, one_departure, one_arrival, one_bus_number,one_ticket_price, total_paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt2->bind_param("ssssssdd", $booking_id, $first_n, $last_n, $one_departure, $one_arrival, $one_bus_number, $one_ticket_price, $totalprice);
-
+// if ($returnBusId) { 
+$stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, departure_schedule_id, return_schedule_id, 
+departure_seat_number, return_seat_number, first_name, last_name, one_ticket_price, return_ticket_price, booking_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt2->bind_param("siiiissdds", $booking_id, $busId, $returnBusId, $seat, $returnSeat, $first_n, $last_n, $price, $returnPrice, $booking_date);
+// } else {
+//     $stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, departure_schedule_id, 
+// departure_seat_number, first_name, last_name, one_ticket_price, booking_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+// $stmt2->bind_param("siiisds", $booking_id, $busId, $seat, $first_n, $last_n, $price, $booking_date);
+// }
 //Set the parameters
-$booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+
 // $user = 123; // Replace with the user's ID
 // $date = '2023-03-09'; // Replace with the booking date
+if ($stmt2->execute()) {
+    // Query was successful
+} else {
+    // Query failed, show error message
+    echo 'Error: ' . $conn->error;
+}
 
-$stmt2->execute();
-$stmt2->close();
+
+
+// $stmt2->close();
 
 //Check for errors
-if ($stmt2->error) {
-    die('Error: ' . $stmt2->error);
-}
+
 
 // Display the booking ID to the user
 // echo 'Your booking ID is: ' . $booking_id;

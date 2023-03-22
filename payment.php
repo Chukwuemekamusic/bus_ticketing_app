@@ -14,11 +14,13 @@ if (isset($_SESSION['returndate']) && strpos($_SERVER['HTTP_REFERER'], 'seatsret
     $seat = $_SESSION['selected_seat'];
 }else if (strpos($_SERVER['HTTP_REFERER'], 'seats.php' !== false)) {
     $seat = $_POST['selected_seat'];
+    // save it into session
+    $_SESSION['selectec_seat'] = $seat;
 }
 $busId =  $_SESSION['bus_id'];
 $price = $_SESSION['price'];
 $totalprice = ($price+$returnPrice);
-    
+$_SESSION['total_price'] = $totalprice;
 
 ?>
 <!doctype html>

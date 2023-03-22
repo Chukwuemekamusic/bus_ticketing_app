@@ -1,14 +1,14 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "BusApp";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "BusApp";
 
-// $servername = "lamp-mysql8";
-// $username = 'root';
-// $password = 'tiger';
-// $dbname = 'BusApp';
+$servername = "lamp-mysql8";
+$username = 'root';
+$password = 'tiger';
+$dbname = 'BusApp';
 
 
 // Create connection

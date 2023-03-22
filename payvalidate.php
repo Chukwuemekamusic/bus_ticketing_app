@@ -65,9 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validator = new Card_validator();
     if ($validator->is_valid()) {
         // echo "<p>Credit card number is valid and Approved.. Please proceed.</p>";
-        header("Location: bookingconfirmation.php"); //send user to confirmation page
         $_SESSION['first_n'] = $first_n;
         $_SESSION['last_n'] = $last_n;
+        header("Location: bookingconfirmation2.php"); //send user to confirmation page
         exit();
 
     } else {
