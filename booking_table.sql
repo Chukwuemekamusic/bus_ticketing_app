@@ -20,3 +20,4 @@ CREATE TABLE bookings (
     return_ticket_price DECIMAL(10,2),
     total_paid DECIMAL(10,2) NOT NULL
     );
+    
