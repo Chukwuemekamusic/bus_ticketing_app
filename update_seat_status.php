@@ -3,7 +3,12 @@ session_start();
 include('./connection.php');
 $seat_number =  $_POST['seat_number'];
 $status = $_POST['status'];
-$busID = $_SESSION['bus_id'];
+if ($_SESSION['return_bus_id']){
+    $busID = $_SESSION['return_bus_id'];
+} else { 
+    $busID = $_SESSION['bus_id'];
+}
+
 
 // Update seat status in database
 $sql = "UPDATE bus_seats SET status =? WHERE seat_number =? AND bus_schedule_id =?";

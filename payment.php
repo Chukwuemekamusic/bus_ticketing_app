@@ -13,9 +13,14 @@ if (isset($_SESSION['returndate']) && strpos($_SERVER['HTTP_REFERER'], 'seatsret
     $_SESSION['return_selected_seat'] = $_POST['selected_seat'];
     
     
-}else if (strpos($_SERVER['HTTP_REFERER'], 'seats.php' !== false)) {
+}
+// if (strpos($_SERVER['HTTP_REFERER'], 'seats.php' !== false)) {
+//     $_SESSION['selected_seat'] = $_POST['selected_seat'];
+//     // save it into session
+// }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selected_seat']) && strpos($_SERVER['HTTP_REFERER'], 'seats.php') !== false) {
     $_SESSION['selected_seat'] = $_POST['selected_seat'];
-    // save it into session
+    
 }
 
 $seat = $_SESSION['selected_seat'];
@@ -52,7 +57,7 @@ $_SESSION['total_price'] = $totalprice;
                 <nav>
                 <ul class="nav justify-content-end">
                             <?php 
-                            echo $returnSeat .'<br>';
+                           
                             echo $seat .'<br>';
                             // echo $returnBusId .'<br>';
                             // echo $_SESSION['price'] . "<br>";
