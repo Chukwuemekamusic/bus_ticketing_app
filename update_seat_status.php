@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../connection.php');
+include('./connection.php');
 $seat_number =  $_POST['seat_number'];
 $status = $_POST['status'];
 $busID = $_SESSION['bus_id'];

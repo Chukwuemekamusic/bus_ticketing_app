@@ -28,7 +28,7 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="./Assets/css/stylenew.css">
-    <script src="./seatsreturn.js"></script>
+    
 </head>
 
 <body>
@@ -116,7 +116,7 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
             // determine the path of the form
             
             if ($bus['status'] == 'available') {
-                echo "<button type='button' class='seat-button' name='return_selected_seat' value='$seat_number';>$seat_number</button>";
+                echo "<button type='button' class='seat-button' name='selected_seat' value='$seat_number';>$seat_number</button>";
             } else if ($bus['status'] != 'available'){
                 // echo "<button class='seat-button-booked' type='button' name='booked_seat' value='$seat_number';>" . $seat_number . "</button>";
                 echo "<button type='button' class='seat-button-booked' style='background-color: red; width: 60px; height: 40px; border-radius: 10px;' name='selected_seat' value='$seat_number';>$seat_number</button>";
@@ -129,8 +129,8 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
     </tr>
 </table>
 
-        
-        <input type="hidden" id="selected-seat-input" name="return_selected_seat" value="">
+
+        <input type="hidden" id="selected-seat-input" name="selected_seat" value="">
         <button class="btn btn-primary mx-auto mt-2" type="submit" id="submit-seat-btn" style="display: none;">Continue</button>
         </form>
     </div>
@@ -166,6 +166,7 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
     
     <!-- <script src="./tutorial/js/jquery-3.5.1.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./seats.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

@@ -93,6 +93,7 @@
 				echo $departure_location .'<br>';
                 echo $arrival_location . '<br>';
                 echo $travel_date;
+				echo $_SESSION['selected_seat'];
 
 				//store returndate in as session
 				// if ($search_returndate) {

@@ -27,7 +27,7 @@ $_SESSION['price'] = $buses[0]['ticket_price'];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="./Assets/css/stylenew.css">
-    <script src="./seats.js"></script>
+    
 </head>
 
 <body>
@@ -172,6 +172,7 @@ $_SESSION['price'] = $buses[0]['ticket_price'];
     
     <!-- <script src="./tutorial/js/jquery-3.5.1.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./seats.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

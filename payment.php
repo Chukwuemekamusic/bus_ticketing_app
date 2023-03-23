@@ -6,17 +6,20 @@ $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first
 $last_name = $_SESSION['last_name'];
 }
 $returnPrice = $_SESSION['return_price'] ?? 0;
-if (isset($_SESSION['returndate']) && strpos($_SERVER['HTTP_REFERER'], 'seatsreturn.php' !== false)) {
+if (isset($_SESSION['returndate']) && strpos($_SERVER['HTTP_REFERER'], 'seatsreturn.php') !== false) {
+
     $returnBusId =  $_SESSION['return_bus_id'];
     
-    $returnSeat = $_POST['return_selected_seat'];
-    $_SESSION['return_seat'] = $returnSeat;
-    $seat = $_SESSION['selected_seat'];
+    $_SESSION['return_selected_seat'] = $_POST['selected_seat'];
+    
+    
 }else if (strpos($_SERVER['HTTP_REFERER'], 'seats.php' !== false)) {
-    $seat = $_POST['selected_seat'];
+    $_SESSION['selected_seat'] = $_POST['selected_seat'];
     // save it into session
-    $_SESSION['selectec_seat'] = $seat;
 }
+
+$seat = $_SESSION['selected_seat'];
+$returnSeat = $_SESSION['return_selected_seat'] ?? '';
 $busId =  $_SESSION['bus_id'];
 $price = $_SESSION['price'];
 $totalprice = ($price+$returnPrice);
@@ -49,6 +52,9 @@ $_SESSION['total_price'] = $totalprice;
                 <nav>
                 <ul class="nav justify-content-end">
                             <?php 
+                            echo $returnSeat .'<br>';
+                            echo $seat .'<br>';
+                            // echo $returnBusId .'<br>';
                             // echo $_SESSION['price'] . "<br>";
                             // echo  . "<br>";
                             // echo $_SESSION['bus_id'] . "<br>";
