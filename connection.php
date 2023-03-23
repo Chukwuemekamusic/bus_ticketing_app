@@ -5,10 +5,15 @@
 // $password = "";
 // $dbname = "BusApp";
 
-$servername = "lamp-mysql8";
-$username = 'root';
-$password = 'tiger';
-$dbname = 'BusApp';
+// $servername = "lamp-mysql8";
+// $username = 'root';
+// $password = 'tiger';
+// $dbname = 'BusApp';
+
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "BusApp";
 
 
 // Create connection

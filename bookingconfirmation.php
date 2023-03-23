@@ -70,25 +70,25 @@ $stmt2->bind_param("sssiisssssssdiisssssssdd", $booking_id, $first_n, $last_n, $
 //Set the parameters
 // $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
 
-// if (isset($_SESSION["booking_id"])) {
-//     // Booking ID already generated, display it to the user
-//     $booking_id = $_SESSION["booking_id"];
-//     echo "Your booking ID is: " . $booking_id;
-// } else {
-//     // Generate a new booking ID
-//     $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+if (isset($_SESSION["booking_id"])) {
+    // Booking ID already generated, display it to the user
+    $booking_id = $_SESSION["booking_id"];
+    echo "Your booking ID is: " . $booking_id;
+} else {
+    // Generate a new booking ID
+    $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
     
-//     // Store the booking ID in the session
-//     $_SESSION["booking_id"] = $booking_id;
+    // Store the booking ID in the session
+    $_SESSION["booking_id"] = $booking_id;
 
-//     // Display the booking ID to the user
-//     echo 'Your booking ID is: ' . $booking_id;
-// }
+    // Display the booking ID to the user
+    //echo 'Your booking ID is: ' . $booking_id;
+}
 
 if ($stmt2->execute()) {
     
 } else {
-    echo "Error inserting record: " . $stmt2->error;
+   echo "Error inserting record: " . $stmt2->error;
 }
 $result = $stmt2->get_result();
 
