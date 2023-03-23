@@ -172,7 +172,7 @@ $row = $result3->fetch_assoc();
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Booking Confirmation</h5>
-      <p class="card-text">Credit card number is valid and approved.</p>
+      <p class="card-text">Card number is valid and approved.</p>
       <hr>
       <h5 class="card-subtitle mb-2 text-muted">Booking Details</h5>
       <p class="card-text"><strong>Booking ID:</strong> <?php echo $booking_id; ?></p>

@@ -93,25 +93,11 @@ $_SESSION['total_price'] = $totalprice;
 
         
         <h2 style="text-align: center;">Payment Gateway</h2>
-        <h6 style="text-align: center;">Pay with Debit Card</h6>
+        <h6 style="text-align: center;">Pay with Card</h6>
 
     </div>
 
     </div>
-    <!-- <div class="container">
-        <h4 class="mb-3">Payment method</h4>
-        <div class="form-check">
-          <input id="credit card" name="paymentMethod" type="radio" class="form-check-input" checked required >
-      <label for="credit card">Debit/Credit Card</label>
-      </div> -->
-      
-      <!-- <div class="form-check">
-          <input id="direct debit" name="paymentMethod" type="radio" class="form-check-input" checked required >
-      <label for="direct debit">Direct debit</label>
-      </div> -->
-      <!-- <div class="form-check">
-          <input id="paypal"  name="paymentMethod"  type="radio" class="form-check-input" checked required >
-      <label for="paypal">Paypal</label> -->
       </div>
       <br>
       <div class="container text-center">
