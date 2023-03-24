@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+        <!-- js for return button -->
+        <script src="./app2.js"></script>
     </head>
 
     <body>
@@ -22,10 +24,10 @@
                     <div class="col-md-10">
                     <nav>
                         <ul class="nav justify-content-end">
-                            <li><a href = "home.html" class="nav-item active" >Home</a></li>
-                            <li><a href = "about.html" class="nav-item">About Us</a></li>
-                            <li><a href = "login.html" class="nav-item">Sign-in|Sign up</a></li>   
-                            <li><a href = "contactus.html" class="nav-item">Contact Us</a></li>   
+                            <li><a href = "home.html" class="nav-item active">Home</a></li>
+                            <li><a href = "about.php" class="nav-item">About Us</a></li>
+                            <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
+                            <li><a href = "login.html" class="nav-item">Sign-in|Sign up</a></li>
                         </ul>
                     </nav>
                     </div>
@@ -37,7 +39,7 @@
         <main>
             <div class="design">
                 <div class="darker">
-                    <form action="">
+                    <form action="./result.php" method="post">
                         <div>
                             <table>
                                 <thead>
@@ -65,23 +67,23 @@
                                         <label for="departure"></label>
                                         <input type="text" id="departure" name="departure" placeholder="Departure" required>
                                         <br><br>
-                                        <button id="oneway" class="trip-button" onclick="removeReturnInput()">One Way</button>
+                                        <button type="button" id="oneway" class="trip-button" onclick="removeReturnInput()">One Way</button>
                                     </div>
                                     <div class="col-md-4">
                                         <!-- <i class="fa-solid fa-location-dot"></i>  -->
                                         <label for="arrival"></label>
                                         <input type="text" id="arrival" name="arrival" placeholder="Arrival" required>
                                         <br><br>
-                                        <button id="roundtrip" class="trip-button" onclick="addReturnInput()">Return</button>
+                                        <button type="button" id="roundtrip" class="trip-button" onclick="addReturnInput()">Return</button>
                                     </div>
-                                    <div class="col-md-4">
-                                    <div>
-                                        <label for="departure"></label>
+                                    <div class="col-md-4" >
+                                    <div id="traveldate">
+                                        <label for="departuredate"></label>
                                         <input type="date" id="departuredate" name="departuredate" required><br><br>
-                                        <label for="return"></label>
-                                        <input type="date" id="returndate" name="returndate"><br><br>
+                                        <!-- <label for="return"></label>
+                                        <input type="date" id="returndate" name="returndate"><br><br> -->
                                     </div>
-                                    <a href="search.html"><button id="searchbusbtn" type="submit">Search for Bus</button></a>
+                                    <button id="searchbusbtn" type="submit">Search for Bus</button>
                                     </div>
                                 </div>     
                             </div>
@@ -90,10 +92,10 @@
                 </div>
                 
                 
-            </div>
+            </div><br><br><br><br>
 
 
-            <div class="container">
+            <div class="container mg-2">
                 <div class="col-md-12">
                     <div id="smallmainContainer" class="row">
                         <div class="col-md-3">
@@ -132,7 +134,7 @@
                         </section>
                         <section class="col-md-3">
                             <h4>Quick Guide</h4>
-                            <p><a href="faq.html">Frequently Asked Question</a></p>      
+                            <p><a href="faq.php">Frequently Asked Question</a></p>      
                         </section>
                     </div>  
                 </div>

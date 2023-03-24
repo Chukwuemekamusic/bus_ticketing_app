@@ -1,5 +1,15 @@
 <?php
 
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "BusApp";
+
+// $servername = "lamp-mysql8";
+// $username = 'root';
+// $password = 'tiger';
+// $dbname = 'BusApp';
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -13,7 +23,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-//Close the database connection
-// mysqli_close($conn);
+
 
 ?>

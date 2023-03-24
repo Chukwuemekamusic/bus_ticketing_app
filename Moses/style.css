@@ -1,88 +1,55 @@
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+
+.table-arrang {
+    margin: 0 auto; 
+    /* This centers the div horizontally */
+    text-align: center; 
+    /* This centers the table within the div */
+    position: absolute; 
+    /* This positions the div relative to the page */
+    /* top: 50%; /* This centers the div vertically */
+    left: 40%; 
+    /* This centers the div horizontally */
+    /* transform: translate(-50%, -50%); This adjusts the centering */ */
 }
-.design{
-    width: 100%;
-    height: vh;
-    background-image: linear-gradient(rgba(0,0,0,0.5), #477a67), url(Roadnetwork4.jpg);
-    background-position: center;
-    background-size: 20cm;
-    text-align: center;
-}
-#buslogo{
-    width: 180px;
-    margin-top: 5px;
-}
-footer>div>section>ul {
-    list-style-type: none;
-    text-align: center;
-    padding: 0;
-}
-footer>div>section {
-    text-align: center;
-}
-footer>div>section>ul>li a {
-    float: center;
-}
-footer>p{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
+
+th.selected {
+    background-color: lightgreen;
+    font-size: 12px;
     padding: 10px;
-    background-color: #477a67;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-nav>ul {
-    list-style-type: none;
-    text-align: right;
-    padding: 0;
-    overflow: hidden;
+th.available {
+    background-color: lightblue;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-nav>ul>li {
-    float: left;
-    padding-left: 50px;   
+th.booked {
+    background-color: red;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-nav>ul>li a {
-    display:  block;
-    color: #000000;
-    text-align: center;
-    padding: 10px 0px;
-    text-decoration: none;
+
+.seat-button {
+  background-color: lightblue; 
+  width: 60px; height: 40px;
+  border-radius: 10px;
 }
-header{
-    border: 3px solid #d0dc7a;
-    max-height: 150px;
+#seat-button-booked {
+    background-color: red !important;
+    width: 60px; height: 40px;
+    border-radius: 10px;
 }
-h2{
-    color: white;
-    padding: 5px;
-}
-header>div>h2{
-    color: black;
-    margin-top: 0;
-}
-table{
-    margin: auto;
-    padding: 0 20px;
-}
-#vectors{
-    max-width: 80px;
-}
-hr{
-    border: 1px solid black;
-}
-p, label, td{
-    color: #ffff;
-}
-footer{
-    margin-top: 50px;
-}
-section>ul, section>h3{
-    margin-left: 10px;
-}
-main{
-    margin-top: -20px;
-}
+
+/* change color of highlighted seat button */
+.seat-button.selected {
+    background-color: lightgreen;
+    color: red;
+    font-weight: bold;
+  }
+  

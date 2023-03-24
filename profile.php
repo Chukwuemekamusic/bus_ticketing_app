@@ -1,11 +1,11 @@
 <?php
 session_start();    //create or retrieve session
-if (!isset($_SESSION["email"])) { //user name must in session to stay here
-    header("Location: login.php");
-}  //if not, go back to login page
-$email = $_SESSION["email"];   //get user name into the variable $username
+if (IsSet($_SESSION["email"])){ //user must in session to stay here
+$email=$_SESSION["email"];   //get user email into the variable $email
 $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first name
 $last_name = $_SESSION['last_name'];
+}
+
 ?>
 
 
@@ -34,10 +34,9 @@ $last_name = $_SESSION['last_name'];
                 <div class="col-md-10">
                     <nav>
                         <ul class="nav justify-content-end">
-                            <li><a href="profile.php" class="nav-item">Home</a></li>
-                            <li><a href="about.html" class="nav-item">About Us</a></li>
-                            <li><a href="contactus.html" class="nav-item">Contact Us</a></li>
-                            <li><a href="managebooking.php" class="nav-item">Manage trip</a></li>
+                        <li><a href="managebooking.php">Manage trip</a></li> 
+                            <li><a href = "about.php" class="nav-item">About Us</a></li>
+                            <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>  
                             <li>
                                 <p>Hello <?php print $first_name; ?>!</p>
                             </li>
@@ -104,9 +103,8 @@ $last_name = $_SESSION['last_name'];
                     </div>
                 </form>
             </div>
-
-
         </div>
+        <br><br><br></br></br>
 
         <div id="latab" class="container">
             <div>
@@ -182,7 +180,7 @@ $last_name = $_SESSION['last_name'];
                     </section>
                     <section class="col-md-3">
                         <h4>Quick Guide</h4>
-                        <p><a href="faq.html">Frequently Asked Question</a></p>
+                        <p><a href="faq.php">Frequently Asked Question</a></p>
                     </section>
                 </div>
             </div>
