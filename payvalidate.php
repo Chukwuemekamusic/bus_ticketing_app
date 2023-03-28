@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
 
     } else {
-        echo "<p>Credit card details is invalid.. Please return to <a href='payment.php'>Payment page</a> input correct details</p>";
+        echo "<p>Credit card details is invalid.. Please return to <a href='payment.php'>Payment page</a> & input correct details</p>";
     }
 }
 ?>
