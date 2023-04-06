@@ -1,6 +1,16 @@
 <?php session_start(); 
-session_destroy();
-session_start();?>
+
+foreach($_SESSION as $key => $value) {
+    // Check if the key is 'first_name', if so, continue to the next iteration
+    if ($key == 'first_name' || $key == 'last_name' || $key == 'email') {
+        continue;
+    }
+    
+    // Unset the session
+    unset($_SESSION[$key]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

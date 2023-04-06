@@ -94,16 +94,6 @@ if (isset($_SESSION["booking_id"])) {
 //     $conn->close();
 }
 
-
-
-
-
-
-
-
-//Check for errors
-
-
 //Close the connection
 //$conn->close();
 $sql3 = "SELECT * FROM bookings where booking_id = '$booking_id'";
