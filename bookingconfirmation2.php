@@ -61,38 +61,46 @@ if (empty($return_arrival_date)) {
 }
 
 
-// // Generate a new booking ID
-// $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+// Generate a new booking ID
+$booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
 
 $stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, firstname, lastname, one_bus_id, one_seat_number, one_departure, one_arrival, one_departure_date, one_departure_time, one_arrival_date, one_arrival_time, one_bus_number, one_ticket_price, return_bus_id, return_seat_number, return_departure, return_arrival, return_departure_date, return_departure_time, return_arrival_date, return_arrival_time, return_bus_number, return_ticket_price, total_paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt2->bind_param("sssiisssssssdiisssssssdd", $booking_id, $first_n, $last_n, $busId, $seat, $one_departure, $one_arrival, $one_departure_date, $one_departure_time, $one_arrival_date, $one_arrival_time, $one_bus_number, $one_ticket_price, $returnBusId, $returnSeat, $return_departure, $return_arrival, $return_departure_date, $return_departure_time, $return_arrival_date, $return_arrival_time, $return_bus_number, $return_ticket_price, $total_price);
 
-// Set the parameters
-$booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+//Set the parameters
+// $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
 
-if (isset($_SESSION["booking_id"])) {
-    // Booking ID already generated, display it to the user
-    $booking_id = $_SESSION["booking_id"];
-    // echo "Your booking ID is: " . $booking_id;
+// if (isset($_SESSION["booking_id"])) {
+//     // Booking ID already generated, display it to the user
+//     $booking_id = $_SESSION["booking_id"];
+//     echo "Your booking ID is: " . $booking_id;
+// } else {
+//     // Generate a new booking ID
+//     $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+    
+//     // Store the booking ID in the session
+//     $_SESSION["booking_id"] = $booking_id;
+
+//     // Display the booking ID to the user
+//     echo 'Your booking ID is: ' . $booking_id;
+// }
+
+if ($stmt2->execute()) {
+    
 } else {
-    // Generate a new booking ID
-    $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
-    
-    // Store the booking ID in the session
-    $_SESSION["booking_id"] = $booking_id;
+    echo "Error inserting record: " . $stmt2->error;
+}
+$result = $stmt2->get_result();
 
-    // Display the booking ID to the user
-    // echo 'Your booking ID is: ' . $booking_id;
-    if ($stmt2->execute()) {
-    
-    } else {
-        echo "Error inserting record: " . $stmt2->error;
-    }
-    $result = $stmt2->get_result();
-    //     // Close the statement and connection
+
+//     // Close the statement and connection
     $stmt2->close();
 //     $conn->close();
-}
+
+
+
+//Check for errors
+
 
 //Close the connection
 //$conn->close();
@@ -105,7 +113,7 @@ if ($stmt3->execute()) {
 }
 $result3 = $stmt3->get_result();
 $stmt3->close();
-$row = $result3->fetch_assoc();
+
 ?>
 
 
@@ -160,46 +168,109 @@ $row = $result3->fetch_assoc();
     </header>
 
     <main>
-    <div class="container">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Booking Confirmation</h5>
-      <p class="card-text">Card number is valid and approved.</p>
-      <hr>
-      <h5 class="card-subtitle mb-2 text-muted">Booking Details</h5>
-      <p class="card-text"><strong>Booking ID:</strong> <?php echo $booking_id; ?></p>
-      <!-- <p class="card-text"><strong>Name:</strong> <?php echo $first_name . ' ' . $last_name; ?></p> -->
-      <h5 class="card-text mb-2"><strong>Inbound Trip</strong></h5>
-      <p class="card-text"><strong>Inbound Departure:</strong> <?php echo $row['one_departure']; ?></p>
-      <p class="card-text"><strong>One-way Arrival:</strong> <?php echo $row['one_arrival']; ?></p>
-      <?php $date1 = $row['one_departure_date']; $dayWeek1 = date('l', strtotime($date1));?>
-      <p class="card-text"><strong>One-way Departure Date:</strong> <?php echo "{$dayWeek1} {$date1}" ; ?></p>
-      <p class="card-text"><strong>One-way Departure Time:</strong> <?php echo date('h:i A', strtotime($row['one_departure_time'])); ?></p>
-      <p class="card-text"><strong>One-way Arrival Date:</strong> <?php echo $row['one_arrival_date']; ?></p>
-      <p class="card-text"><strong>One-way Arrival Time:</strong> <?php echo $row['one_arrival_time']; ?></p>
-      <p class="card-text"><strong>One-way Bus Number:</strong> <?php echo $row['one_bus_number']; ?></p>
-      <p class="card-text"><strong>One-way Seat Number:</strong> <?php echo $row['one_seat_number']; ?></p>
-      <p class="card-text"><strong>One-way Ticket Price:</strong> <?php echo "£".$row['one_ticket_price']; ?></p>
-      <?php if (isset($_SESSION['return_price'])) { ?>
-        <h5 class="card-text mt-3"><strong>Return Trip</strong></h5>
-        <p class="card-text"><strong>Return Departure:</strong> <?php echo $row['return_departure']; ?></p>
-        <p class="card-text"><strong>Return Arrival:</strong> <?php echo $row['return_arrival']; ?></p>
-        <?php $date2 = $row['one_departure_date']; $dayWeek2 = date('l', strtotime($date2));?>
-        <p class="card-text"><strong>Return Departure Date:</strong> <?php echo "{$dayWeek2} {$date2}" ; ?></p>
-        <p class="card-text"><strong>Return Departure Time:</strong> <?php echo date('h:i A', strtotime($row['return_departure_time'])); ?></p>
-        <p class="card-text"><strong>Return Arrival Date:</strong> <?php echo $row['return_arrival_date']; ?></p>
-        <p class="card-text"><strong>Return Arrival Time:</strong> <?php echo $row['return_arrival_time']; ?></p>
-        <p class="card-text"><strong>Return Bus Number:</strong> <?php echo $row['return_bus_number']; ?></p>
-        <p class="card-text"><strong>Return Seat Number:</strong> <?php echo $row['return_seat_number']; ?></p>
-        <p class="card-text"><strong>Return Ticket Price:</strong> <?php echo "£".$row['return_ticket_price']; ?></p>
-      <?php } ?>
-      <hr>
-      <p class="card-text"><strong>Total Paid:</strong> <?php echo "£".$total_price; ?></p>
-      <a href="#" class="card-link">Print Confirmation</a>
-    </div>
-  </div>
-</div>
+        <div class="container">
+            <h3>Credit card number is valid and Approved.</h3>
+            <h4>Here is your booking details<h4>
+      
+            <?php if (isset($_SESSION['return_price'])) { ?>
+                
+                <table class="table table-bordered">
+    <tr class="table-info">
+        <th>Booking ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Inbound_departure</th>
+        <th>one_arrival</th>
+        <th>one_departure_date</th>
+        <th>one_departure_time</th>
+        <th>one_arrival_date</th>
+        <th>one_arrival_time</th>
+        <th>one_bus_number</th>
+        <th>one_seat_number</th>
+        <th>one_ticket_price</th>
+        <th>return_departure</th>
+        <th>return_arrival</th>
+        <th>return_departure_date</th>
+        <th>return_departure_time</th>
+        <th>return_arrival_date</th>
+        <th>return_arrival_time/th>
+        <th>return_bus_number</th>
+        <th>return_seat_number</th>
+        <th>return_ticket_price</th>
+        <th>Total Paid</th>
 
+    </tr>
+                <?php $row = $result3->fetch_assoc() ?>
+                <tr class="table-dark">
+                    <td><?php echo $row['booking_id']; ?></td>
+                    <td><?php echo $row['firstname']; ?></td>
+                    <td><?php echo $row['lastname']; ?></td>
+                    <td><?php echo $row['one_departure']; ?></td>
+                    <td><?php echo $row['one_arrival']; ?></td>
+                    <td><?php echo $row['one_departure_date']; ?></td>
+                    <td><?php echo $row['one_departure_time']; ?></td>
+                    <td><?php echo $row['one_arrival_date']; ?></td>
+                    <td><?php echo $row['one_arrival_time']; ?></td>
+                    <td><?php echo $row['one_bus_number']; ?></td>
+                    <td><?php echo $row['one_seat_number']; ?></td>                    
+                    <td><?php echo $row['one_ticket_price']; ?></td>
+                    <td><?php echo $row['return_departure']; ?></td>
+                    <td><?php echo $row['return_arrival']; ?></td>
+                    <td><?php echo $row['return_departure_date']; ?></td>
+                    <td><?php echo $row['return_departure_time']; ?></td>
+                    <td><?php echo $row['return_arrival_date']; ?></td>
+                    <td><?php echo $row['return_arrival_time']; ?></td>
+                    <td><?php echo $row['return_bus_number']; ?></td>
+                    <td><?php echo $row['return_seat_number']; ?></td>
+                    <td><?php echo $row['return_ticket_price']; ?></td>
+                    <td><?php echo $row['total_paid']; ?></td>
+    </tr>
+    <!-- </tr>
+    </tr> -->
+    </table>
+
+    <?php } else { ?>
+
+<table class="table table-bordered">
+<tr class="table-info">
+        <th>Booking ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Inbound_departure</th>
+        <th>one_arrival</th>
+        <th>one_departure_date</th>
+        <th>one_departure_time</th>
+        <th>one_arrival_date</th>
+        <th>one_arrival_time</th>
+        <th>one_bus_number</th>
+        <th>one_ticket_price</th>
+        <th>Total Paid</th>
+
+
+    </tr>
+                <?php $row = $result3->fetch_assoc() ?>
+                <tr class="table-success">
+                    <td><?php echo $row['booking_id']; ?></td>
+                    <td><?php echo $row['firstname']; ?></td>
+                    <td><?php echo $row['lastname']; ?></td>
+                    <td><?php echo $row['one_departure']; ?></td>
+                    <td><?php echo $row['one_arrival']; ?></td>
+                    <td><?php echo $row['one_departure_date']; ?></td>
+                    <td><?php echo $row['one_departure_time']; ?></td>
+                    <td><?php echo $row['one_arrival_date']; ?></td>
+                    <td><?php echo $row['one_arrival_time']; ?></td>
+                    <td><?php echo $row['one_bus_number']; ?></td>
+                    <td><?php echo $row['one_ticket_price']; ?></td>
+                    <td><?php echo $row['total_paid']; ?></td>
+    </tr>
+        <!-- </tr>
+    </tr> -->
+    </table>
+        <?php } ?>
+
+ 
+
+        </div>
     </main>
 
     <footer>
@@ -208,7 +279,7 @@ $row = $result3->fetch_assoc();
             <div class="col-md-12" id="lastleft">
                 <div id="footercontainer" class="row">
                     <section class="col-md-3">
-                        <h5>Contact Us</h5>
+                        <h4>Contact Us</h4>
                         <ul>
                             <li>Email: info@xxxxbus.com</li>
                             <li>Phone No.: +44 7498 xxxxxxx</li>
@@ -217,7 +288,7 @@ $row = $result3->fetch_assoc();
                     <section class="col-md-6">
                     </section>
                     <section class="col-md-3">
-                        <h5>Quick Guide</h5>
+                        <h4>Quick Guide</h4>
                         <p><a href="faq.php">Frequently Asked Question</a></p>
                     </section>
                 </div>

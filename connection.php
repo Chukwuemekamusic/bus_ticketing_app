@@ -10,6 +10,11 @@ $dbname = "BusApp";
 // $password = 'tiger';
 // $dbname = 'BusApp';
 
+// $servername = "localhost";
+// $username = "root";
+// $password = "root";
+// $dbname = "BusApp";
+
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
