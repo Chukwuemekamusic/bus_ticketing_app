@@ -7,7 +7,7 @@ include_once("connection_pdo.php");
 // error_reporting(E_ALL);
 
 try {
-    $file = fopen("clean_bus_schedules.csv", "r");
+    $file = fopen("clean_bus_schedules_updated.csv", "r");
 
 // Read the header
 $header = fgetcsv($file);
