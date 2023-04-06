@@ -1,9 +1,14 @@
 <?php
 session_start();    //create or retrieve session
+include ('./functions.php');
+
 if (isset($_SESSION["email"])){ //user must be in session to stay here
     $email=$_SESSION["email"];   //get user email into the variable $email
     $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalizes the first name
     $last_name = $_SESSION['last_name'];
+    // get user_id
+    $user_id = get_single_detail('uid', 'users', "email = '$email'");
+
 }
 
 
@@ -68,7 +73,7 @@ $stmt2 = $conn->prepare("INSERT INTO bookings (booking_id, firstname, lastname, 
 $stmt2->bind_param("sssiisssssssdiisssssssdd", $booking_id, $first_n, $last_n, $busId, $seat, $one_departure, $one_arrival, $one_departure_date, $one_departure_time, $one_arrival_date, $one_arrival_time, $one_bus_number, $one_ticket_price, $returnBusId, $returnSeat, $return_departure, $return_arrival, $return_departure_date, $return_departure_time, $return_arrival_date, $return_arrival_time, $return_bus_number, $return_ticket_price, $total_price);
 
 // Set the parameters
-$booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
+// $booking_id = 'EDGE-BUS-BOOKID-' . uniqid();
 
 if (isset($_SESSION["booking_id"])) {
     // Booking ID already generated, display it to the user
@@ -80,11 +85,23 @@ if (isset($_SESSION["booking_id"])) {
     
     // Store the booking ID in the session
     $_SESSION["booking_id"] = $booking_id;
-
-    // Display the booking ID to the user
-    // echo 'Your booking ID is: ' . $booking_id;
-    if ($stmt2->execute()) {
     
+    if ($stmt2->execute()) {
+        // insert new booking to users_bookings table
+        if ($user_id) {
+            $sql = "INSERT INTO users_bookings (uid, booking_id) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("is", $user_id, $booking_id);
+
+            if ($stmt->execute()) {
+            } else {
+                echo "Error with users_bookings: " . $sql . "<br>" . $conn->error;
+            }
+
+            $stmt->close();
+        }
+          
     } else {
         echo "Error inserting record: " . $stmt2->error;
     }

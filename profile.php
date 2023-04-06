@@ -1,13 +1,17 @@
 <?php
 session_start();    //create or retrieve session
+include_once("connection.php");
+include_once('./functions.php');
+
 if (IsSet($_SESSION["email"])){ //user must in session to stay here
 $email=$_SESSION["email"];   //get user email into the variable $email
 $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first name
 $last_name = $_SESSION['last_name'];
+$user_id = get_single_detail('uid', 'users', "email = '$email'");
+} else {
+    header('Location: home.html');
+    exit;
 }
-
-include_once("connection.php");
-// include_once("connection_lamp.php");
 
 ?>
 
@@ -115,12 +119,13 @@ include_once("connection.php");
             <div>
                 <h3>Booking History</h3>
                 <?php
-                // Get storyteller's stories from the database
-            $first_n = $_SESSION['first_n'] ?? '';
-            $last_n = $_SESSION['last_n'] ?? '';
-            $sql = "SELECT * FROM bookings WHERE firstname = '$first_n' AND lastname = '$last_n'";
-            $result = mysqli_query($conn, $sql); ?>
-            <?php if ($result->num_rows > 0): ?>
+            $result = get_user_details(
+                "b.*", 
+                "users u, bookings b, users_bookings ub", 
+                "u.uid = ub.uid and b.booking_id = ub.booking_id and u.uid = '$user_id'"
+            );
+            ?>
+            <?php if ($result): ?>
                 <table id="tab" class="table table-striped">
                     <thead>
                         <tr>
@@ -164,8 +169,8 @@ include_once("connection.php");
                     </thead>
 
                     <tbody>
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <tr>
+                    <?php foreach ($result as $row): ?>
+                        <tr class="bg-dark">
                             <td><dropdown-item><?php echo $row['one_departure']; ?></dropdown-item></td>
                             <td><dropdown-menu><?php echo $row['one_arrival']; ?></dropdown-menu></td>
                             <td><dropdown-item><?php echo $row['one_departure_date']; ?></dropdown-item></td>
@@ -176,7 +181,7 @@ include_once("connection.php");
                             <td><dropdown-item><?php echo $row['return_departure_time']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['total_paid']; ?></dropdown-item></td>
                         </tr>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <?php else: ?>
