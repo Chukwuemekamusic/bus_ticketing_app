@@ -44,6 +44,15 @@ $_SESSION['total_price'] = $totalprice;
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
         <!-- js for return button -->
         <script src="../app2.js"></script>
+        <style>
+.label-width {
+  width: 150px;
+}
+
+.input-width {
+  width: 100%;
+}
+        </style>
     </head>
   <body>
     <header class="container">
@@ -58,7 +67,7 @@ $_SESSION['total_price'] = $totalprice;
                 <ul class="nav justify-content-end">
                             <?php 
                            
-                            echo $seat .'<br>';
+                            // echo $seat .'<br>';
                             // echo $returnBusId .'<br>';
                             // echo $_SESSION['price'] . "<br>";
                             // echo  . "<br>";
@@ -93,25 +102,11 @@ $_SESSION['total_price'] = $totalprice;
 
         
         <h2 style="text-align: center;">Payment Gateway</h2>
-        <h6 style="text-align: center;">Pay with Debit Card</h6>
+        <h6 style="text-align: center;">Pay with Card</h6>
 
     </div>
 
     </div>
-    <!-- <div class="container">
-        <h4 class="mb-3">Payment method</h4>
-        <div class="form-check">
-          <input id="credit card" name="paymentMethod" type="radio" class="form-check-input" checked required >
-      <label for="credit card">Debit/Credit Card</label>
-      </div> -->
-      
-      <!-- <div class="form-check">
-          <input id="direct debit" name="paymentMethod" type="radio" class="form-check-input" checked required >
-      <label for="direct debit">Direct debit</label>
-      </div> -->
-      <!-- <div class="form-check">
-          <input id="paypal"  name="paymentMethod"  type="radio" class="form-check-input" checked required >
-      <label for="paypal">Paypal</label> -->
       </div>
       <br>
       <div class="container text-center">
@@ -120,61 +115,53 @@ $_SESSION['total_price'] = $totalprice;
       </div>
       <form method="post" action="payvalidate.php">
       <div class="row">
-          <div class="col-md-6">
-         
-            <label for="cardholder" class="form-label"> Cardholder Name </label>
-             <input type="text" class="form-control">
-             <small class="text">Name as displayed on Card</small>
-             <div class="invalid-feedback">
-              Card Holder Name Required
-             </div>
-             <div class="col-md-6">
-                <label for="first_name" class="form-label"> First Name</label>
-                <input type="text" name="first_n" class="form-control" required>
-                
+            <div class="col-md-6">
+              <label for="first_name" class="form-label label-width">First Name</label>
+              <input type="text" name="first_n" class="form-control input-width" required>
             </div>
-                <div class="col-md-6">
-                    <label for="last_name" class="form-label">Last Name</label>
-              <p><input type="text" name="last_n" class="form-control" required></p>
-             </div>
-          </div>
-
-          <div class="col-md-6">
-            <label for="cardnumber" class="form-label">Card Number</label>
-            
-              <input id="cardnumber" type="number" placeholder="1111222233334444" name="card_number" class="form-control" required>
+            <div class="col-md-6">
+              <label for="last_name" class="form-label label-width">Last Name</label>
+              <input type="text" name="last_n" class="form-control input-width" required>
+            </div>
+            <br>
+            <div class="col-md-6">
+              <label for="cardholder" class="form-label label-width">Cardholder Name</label>
+              <input type="text" class="form-control input-width">
+              <small class="text">Name as displayed on Card</small>
               <div class="invalid-feedback">
-                  Card Number required
+                Card Holder Name Required
               </div>
-  
-          </div>
-          <div class="col-md-6">
-              <label for="cardExpiremnth" class="form-label">Expiration Month</label>
-              
-              <input id="cardExpire" type="number" placeholder="01" name="expiry_month" class="form-control" required>
+              <br>
+            </div>
+            <div class="col-md-6">
+              <label for="cardnumber" class="form-label label-width">Card Number</label>
+              <input id="cardnumber" type="number" placeholder="1111222233334444" name="card_number" class="form-control input-width" required>
               <div class="invalid-feedback">
-                  expiration details required
+                Card Number required
               </div>
-  
-          </div>
-          <div class="col-md-6">
-            <label for="cardExpireyr" class="form-label" >Expiration Year</label>
-            
-            <input id="cardExpire" type="number" placeholder="2027" name="expiry_year" class="form-control" required>
-            <div class="invalid-feedback">
+            </div>
+            <br>
+            <div class="col-md-6">
+              <label for="cardExpiremnth" class="form-label label-width">Expiration Month</label>
+              <input id="cardExpire" type="number" placeholder="01" name="expiry_month" class="form-control input-width" required>
+              <div class="invalid-feedback">
                 expiration details required
-            </div>
-
-        </div>
-          <div class="col-md-6">
-              <label for="cvv" class="form-label">CVV</label>
-            
-              <input id="CVV" type="number" placeholder="123"  name="cvv" class="form-control" required>
-              <div class="invalid-feedback">
-                  CVV required
               </div>
-  
-          </div>
+            </div>
+            <div class="col-md-6">
+              <label for="cardExpireyr" class="form-label label-width">Expiration Year</label>
+              <input id="cardExpire" type="number" placeholder="2027" name="expiry_year" class="form-control input-width" required>
+              <div class="invalid-feedback">
+                expiration details required
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="cvv" class="form-label label-width">CVV</label>
+              <input id="CVV" type="number" placeholder="123" name="cvv" class="form-control input-width" required>
+              <div class="invalid-feedback">
+                CVV required
+              </div>
+            </div>
 
            </div>
            <hr class="my-4">
