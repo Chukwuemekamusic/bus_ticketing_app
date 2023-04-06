@@ -6,6 +6,9 @@ $first_name = ucfirst($_SESSION['first_name']); // ucfirst capitalises the first
 $last_name = $_SESSION['last_name'];
 }
 
+include_once("connection.php");
+// include_once("connection_lamp.php");
+
 ?>
 
 
@@ -21,6 +24,8 @@ $last_name = $_SESSION['last_name'];
     <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+    <!-- js for return button -->
+    <script src="./app2.js"></script>
 </head>
 
 <body>
@@ -52,7 +57,7 @@ $last_name = $_SESSION['last_name'];
     <main>
         <div class="design">
             <div class="darker">
-                <form action="">
+                <form action="./result.php" method="post">
                     <div>
                         <table>
                             <thead>.
@@ -74,91 +79,109 @@ $last_name = $_SESSION['last_name'];
                     </div>
                     <hr>
                     <div class="container">
-                        <div class="col-md-12">
-                            <div id="bigmainContainer" class="row">
-                                <div class="col-md-4">
-                                    <label for="departure"></label>
-                                    <input type="text" id="departure" name="departure" placeholder="Departure" required>
-                                    <br><br>
-                                    <button id="oneway" class="trip-button" onclick="removeReturnInput()">One Way</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- <i class="fa-solid fa-location-dot"></i>  -->
-                                    <label for="arrival"></label>
-                                    <input type="text" id="arrival" name="arrival" placeholder="Arrival" required>
-                                    <br><br>
-                                    <button id="roundtrip" class="trip-button" onclick="addReturnInput()">Return</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <div>
+                            <div class="col-md-12">
+                                <div id="bigmainContainer" class="row">
+                                    <div class="col-md-4">
                                         <label for="departure"></label>
-                                        <input type="date" id="departuredate" name="departuredate" required><br><br>
-                                        <label for="return"></label>
-                                        <input type="date" id="returndate" name="returndate"><br><br>
+                                        <input type="text" id="departure" name="departure" placeholder="Departure" required>
+                                        <br><br>
+                                        <button type="button" id="oneway" class="trip-button" onclick="removeReturnInput()">One Way</button>
                                     </div>
-                                    <a href="search.html"><button id="searchbusbtn" type="submit">Search for Bus</button></a>
-                                </div>
+                                    <div class="col-md-4">
+                                        <!-- <i class="fa-solid fa-location-dot"></i>  -->
+                                        <label for="arrival"></label>
+                                        <input type="text" id="arrival" name="arrival" placeholder="Arrival" required>
+                                        <br><br>
+                                        <button type="button" id="roundtrip" class="trip-button" onclick="addReturnInput()">Return</button>
+                                    </div>
+                                    <div class="col-md-4" >
+                                    <div id="traveldate">
+                                        <label for="departuredate"></label>
+                                        <input type="date" id="departuredate" name="departuredate" required><br><br>
+                                        <!-- <label for="return"></label>
+                                        <input type="date" id="returndate" name="returndate"><br><br> -->
+                                    </div>
+                                    <button id="searchbusbtn" type="submit">Search for Bus</button>
+                                    </div>
+                                </div>     
                             </div>
-                        </div>
                     </div>
                 </form>
             </div>
         </div>
         <br><br><br></br></br>
 
-        <div id="latab" class="container">
+        <div id="latab" class="container-fluid">
             <div>
                 <h3>Booking History</h3>
+                <?php
+                // Get storyteller's stories from the database
+            $first_n = $_SESSION['first_n'] ?? '';
+            $last_n = $_SESSION['last_n'] ?? '';
+            $sql = "SELECT * FROM bookings WHERE firstname = '$first_n' AND lastname = '$last_n'";
+            $result = mysqli_query($conn, $sql); ?>
+            <?php if ($result->num_rows > 0): ?>
                 <table id="tab" class="table table-striped">
                     <thead>
                         <tr>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">From</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Aberdeen</a>
-                                    <a class="dropdown-item" href="#">Dundee</a>
-                                    <a class="dropdown-item" href="#">Edinburgh</a>
-                                </div>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Inbound Departure</a>
+                                
                             </th>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">To</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Aberdeen</a>
-                                    <a class="dropdown-item" href="#">Dundee</a>
-                                    <a class="dropdown-item" href="#">Edinburgh</a>
-                                </div>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">One-way Arrival</a>
+                                
                             </th>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Date</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">22/02/2023</a>
-                                    <a class="dropdown-item" href="#">31/01/2023</a>
-                                    <a class="dropdown-item" href="#">03/02/2023</a>
-                                </div>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">One-way Departure Date</a>
+                                
                             </th>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Time</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">13:01:54</a>
-                                    <a class="dropdown-item" href="#">01:12:45</a>
-                                    <a class="dropdown-item" href="#">20:03:26</a>
-                                </div>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">One-way Departure Time</a>
+                                
+                            </th>
+                            <th class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure</a>
+                                
+                            </th>
+                            <th class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Arrival</a>
+                                
+                            </th>
+                            <th class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure Date</a>
+                                
+                            </th>
+                            <th class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure Time</a>
+                                
+                            </th>
+                            <th class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Total Paid</a>
+                                
                             </th>
                         </tr>
                     </thead>
 
                     <tbody>
+                    <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
-                            <td><dropdown-item>Aberdeen</dropdown-item></td>
-                            <td><dropdown-menu>Dundee</dropdown-menu></td>
-                            <td><dropdown-item>22/02/2023</dropdown-item></td>
-                            <td><dropdown-item>13:01:54</dropdown-item></td>
+                            <td><dropdown-item><?php echo $row['one_departure']; ?></dropdown-item></td>
+                            <td><dropdown-menu><?php echo $row['one_arrival']; ?></dropdown-menu></td>
+                            <td><dropdown-item><?php echo $row['one_departure_date']; ?></dropdown-item></td>
+                            <td><dropdown-item><?php echo $row['one_departure_time']; ?></dropdown-item></td>
+                            <td><dropdown-item><?php echo $row['return_departure']; ?></dropdown-item></td>
+                            <td><dropdown-item><?php echo $row['return_arrival']; ?></dropdown-item></td>
+                            <td><dropdown-menu><?php echo $row['returndate']; ?></dropdown-menu></td>
+                            <td><dropdown-item><?php echo $row['return_departure_time']; ?></dropdown-item></td>
+                            <td><dropdown-item><?php echo $row['total_price']; ?></dropdown-item></td>
                         </tr>
-                    </tbody>
-                    <tbody>
-
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
+                <?php else: ?>
+            <p>No bookings found.</p>
+            <?php endif; ?>
             </div>
 
         </div>
