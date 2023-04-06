@@ -172,9 +172,9 @@ include_once("connection.php");
                             <td><dropdown-item><?php echo $row['one_departure_time']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_departure']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_arrival']; ?></dropdown-item></td>
-                            <td><dropdown-menu><?php echo $row['returndate']; ?></dropdown-menu></td>
+                            <td><dropdown-menu><?php echo $row['return_departure_date']; ?></dropdown-menu></td>
                             <td><dropdown-item><?php echo $row['return_departure_time']; ?></dropdown-item></td>
-                            <td><dropdown-item><?php echo $row['total_price']; ?></dropdown-item></td>
+                            <td><dropdown-item><?php echo $row['total_paid']; ?></dropdown-item></td>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
