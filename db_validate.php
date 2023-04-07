@@ -35,11 +35,37 @@ $sql = "SELECT * FROM users WHERE email = '$email' and auth = '$psw'";
 $result = mysqli_query($conn, $sql);
 
 // If the user is found, compare the submitted password with the password retrieved from the database
+// if (mysqli_num_rows($result) > 0) {
+//   $row = mysqli_fetch_assoc($result);
+//       // if ($psw == $row['password']) {
+//   if ($psw == $row['auth']) {
+
+//     // Redirect to user home page
+//     header('Location: profile.php');
+//     $_SESSION['email'] = $email;
+//     $_SESSION['first_name'] = $row['first_name'];
+//     $_SESSION['last_name'] = $row['last_name'];
+//     exit();
+//   } else {
+  
+//     echo "Invalid password";
+// }
+// } else {
+//   echo "Invalid username or password <br>";
+//   echo "<a href='login.html'>Return to Sign in</a>";
+// }
+
 if (mysqli_num_rows($result) > 0) {
   $row = mysqli_fetch_assoc($result);
-      // if ($psw == $row['password']) {
-  if ($psw == $row['auth']) {
-
+  
+  if ($email == 'admin@edgebus.com' && $psw == $row['auth']) {
+    // Redirect to admin home page
+    header('Location: admin.php');
+    $_SESSION['email'] = $email;
+    $_SESSION['first_name'] = $row['first_name'];
+    $_SESSION['last_name'] = $row['last_name'];
+    exit();
+  } else if ($psw == $row['auth']) {
     // Redirect to user home page
     header('Location: profile.php');
     $_SESSION['email'] = $email;
@@ -47,12 +73,13 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION['last_name'] = $row['last_name'];
     exit();
   } else {
-  
     echo "Invalid password";
-}
+  }
 } else {
   echo "Invalid username or password <br>";
   echo "<a href='login.html'>Return to Sign in</a>";
 }
 
 ?>
+
+
