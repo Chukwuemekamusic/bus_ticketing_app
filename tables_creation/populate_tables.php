@@ -1,13 +1,13 @@
 <?php
 // this populates the bus_schedueles and automatically populate the bus seats table
 
-include_once("connection_pdo.php");
+include_once("./connection_pdo.php");
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
 try {
-    $file = fopen("clean_bus_schedules.csv", "r");
+    $file = fopen("bus_schedules.csv", "r");
 
 // Read the header
 $header = fgetcsv($file);
