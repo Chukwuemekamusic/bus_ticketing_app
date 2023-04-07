@@ -170,14 +170,20 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
 
                     <tbody>
                     <?php foreach ($result as $row): ?>
+                        <?php $date1 = $row['one_departure_date']; $dayWeek1 = date('D', strtotime($date1));
+                        if ($row['return_departure_date']) { 
+                            $date2 = $row['return_departure_date']; $dayWeek2 = date('D', strtotime($date2)); 
+                        } else {$date2 = ""; $dayWeek2 = "";}
+                        ?>
                         <tr class="bg-dark">
                             <td><dropdown-item><?php echo $row['one_departure']; ?></dropdown-item></td>
-                            <td><dropdown-menu><?php echo $row['one_arrival']; ?></dropdown-menu></td>
-                            <td><dropdown-item><?php echo $row['one_departure_date']; ?></dropdown-item></td>
+                            <td><dropdown-menu><?php echo $row['one_arrival']; ?></dropdown-menu></td>                            
+                            <td><dropdown-item><?php echo "{$date1} {$dayWeek1}" ; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['one_departure_time']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_departure']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_arrival']; ?></dropdown-item></td>
                             <td><dropdown-menu><?php echo $row['return_departure_date']; ?></dropdown-menu></td>
+                            <td><dropdown-item><?php echo "{$date2} {$dayWeek2}" ; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_departure_time']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['total_paid']; ?></dropdown-item></td>
                         </tr>
