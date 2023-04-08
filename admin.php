@@ -50,6 +50,13 @@ $result3 = $stmt->get_result();
 $bookingcount = mysqli_fetch_assoc($result3)['bookingcount'];
 $stmt->close();
 
+$sql5 = "SELECT id, name, email, message
+        FROM feedback order by id DESC";
+$stmt = $conn->prepare($sql5);
+$stmt->execute();
+$feedback = $stmt->get_result();
+$stmt->close();
+
 ?>
 
 
@@ -137,6 +144,7 @@ $stmt->close();
 
         </div>
         <br>
+
         <div class="container">
          
   <h6>Change User Password:</h6>
@@ -153,6 +161,25 @@ $stmt->close();
             <br><br>
             <div class="container">
                 <h3>Users Feedback</h3>
+
+<table class="table table-bordered">
+
+<tr class="table-info">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Message</th>
+</tr>
+            <?php while ($row = $feedback->fetch_assoc()) { ?>
+            <tr class="table-success">
+                <td><?php echo $row['ID']; ?></td>
+                <td><?php echo $row['Name']; ?></td>
+                <td><?php echo $row['Email']; ?></td>
+                <td><?php echo $row['Message']; ?></td>
+</tr>
+<?php } ?>
+</table>
+
             </div>
             <br><br>  
             <div class="container">
