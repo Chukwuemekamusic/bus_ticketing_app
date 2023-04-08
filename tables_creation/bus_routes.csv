@@ -1,12 +1,10 @@
 departure,arrival
 Aberdeen,London
-Aberdeen,Manchester
 Aberdeen,Glasgow
 Aberdeen,Edinburgh
 Aberdeen,Inverness
 Aberdeen,Dundee
 London,Aberdeen
-Manchester,Aberdeen
 Glasgow,Aberdeen
 Edinburgh,Aberdeen
 Inverness,Aberdeen

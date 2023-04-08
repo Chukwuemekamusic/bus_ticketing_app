@@ -28,18 +28,44 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="./Assets/css/stylenew.css">
-    <script src="./seatsreturn.js"></script>
+    
 </head>
 
 <body>
-    <header class="text-center">
-        <h1>Seat Reservation</h1>
-        <h5><?php echo "{$buses[0]['departure']} to {$buses[0]['arrival']}"; ?></h5>
-        <h5><?php echo "Departure: {$buses[0]['departure_date']} {$buses[0]['departure_time']} "; ?></h5>
-        <h5><?php echo "Arrival: {$buses[0]['arrival_date']} {$buses[0]['arrival_time']} "; ?></h5>
-        <h5><?php echo "Ticket price: £{$buses[0]['ticket_price']}"; ?></h5>
+    <header class="container">
+            <div class="col-md-12">
+                <div id="headerContainer" class="row">
+                    <div class="col-md-2">
+                        <img id="buslogo" src="./Assets/Buslogo.png" alt="Edge Bus Logo"> 
+                    </div>
+                
+                    <div class="col-md-10">
+                    <nav>
+                        <ul class="nav justify-content-end">
+                            <li><a href = "home.html" class="nav-item active">Home</a></li>
+                            <li><a href = "about.php" class="nav-item">About Us</a></li>
+                            <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
+                            <li><a href = "login.html" class="nav-item">Sign-in|Sign up</a></li>  
+                            
+                            <!-- to be removed  -->
+                            <li><a href = "payment.php" class="nav-item">PAY</a></li>   
+                            <!-- to be removed  -->
+
+                        </ul>
+                    </nav>
+                    </div>
+                </div>    
+            </div>
 
     </header>
+    <div class="text-center ">
+        <h1>Seat Reservation</h1>
+        <p><?php echo "Departure: {$buses[0]['departure_date']} {$buses[0]['departure_time']} "; ?></p>
+        <p><?php echo "Arrival: {$buses[0]['arrival_date']} {$buses[0]['arrival_time']} "; ?></p>
+        <p><?php echo "{$buses[0]['departure']} to {$buses[0]['arrival']}"; ?></p>
+        <p><?php echo "Ticket price: £{$buses[0]['ticket_price']}"; ?></p>
+
+    </div>
 
 
 
@@ -90,7 +116,7 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
             // determine the path of the form
             
             if ($bus['status'] == 'available') {
-                echo "<button type='button' class='seat-button' name='return_selected_seat' value='$seat_number';>$seat_number</button>";
+                echo "<button type='button' class='seat-button' name='selected_seat' value='$seat_number';>$seat_number</button>";
             } else if ($bus['status'] != 'available'){
                 // echo "<button class='seat-button-booked' type='button' name='booked_seat' value='$seat_number';>" . $seat_number . "</button>";
                 echo "<button type='button' class='seat-button-booked' style='background-color: red; width: 60px; height: 40px; border-radius: 10px;' name='selected_seat' value='$seat_number';>$seat_number</button>";
@@ -103,16 +129,44 @@ $_SESSION['return_price'] = $buses[0]['ticket_price'];
     </tr>
 </table>
 
-        
-        <input type="hidden" id="selected-seat-input" name="return_selected_seat" value="">
+
+        <input type="hidden" id="selected-seat-input" name="selected_seat" value="">
         <button class="btn btn-primary mx-auto mt-2" type="submit" id="submit-seat-btn" style="display: none;">Continue</button>
         </form>
     </div>
 
+    <footer>
+            <hr>
+            <div class="container">
+                <div class="col-md-12" id="lastleft">
+                    <div id="footercontainer" class="row">
+                        <section class="col-md-3">
+                            <!-- <a href="contactus.html"><h4>Contact Us</h4></a> -->
+                            <ul>
+                                <li>Email: info@xxxxbus.com</li>
+                                <li>Phone No.: +44 7498 xxxxxxx</li>
+                                <li>Address: Garthdee, Aberdeen, Scotland, UK</li>
+                            </ul>
+                        </section>
+                        <section class="col-md-6">
+                        </section>
+                        <section class="col-md-3">
+                            <h4>Quick Guide</h4>
+                            <p><a href="faq.php">Frequently Asked Question</a></p>      
+                        </section>
+                    </div>  
+                </div>
+            </div>   
+            <div id="last">
+                <p>&copy; 2023 Bus Inc. All rights reserved.</p>
+            </div>
+            
+        </footer>
     <!-- #TODO add the cancel button -->
     
     <!-- <script src="./tutorial/js/jquery-3.5.1.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./seats.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
