@@ -64,10 +64,7 @@ foreach($_SESSION as $key => $value) {
                             <li><a href = "about.php" class="nav-item">About Us</a></li>
                             <li><a href = "contactus.php" class="nav-item">Contact Us</a></li>   
                             <li><a href = "login.html" class="nav-item">Sign-in|Sign up</a></li>  
-                            
-                            <!-- to be removed  -->
-                            <li><a href = "payment.php" class="nav-item">PAY</a></li>   
-                            <!-- to be removed  -->
+
 
                         </ul>
                     </nav>
