@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $seats_booked = 0;
         // $bus_number = $busData[7];
 
-    $sql = "INSERT INTO buses (departure, arrival, departure_date, departure_time, arrival_date, arrival_time, bus_capacity, bus_number)
+    $sql = "INSERT INTO bus_schedules (departure, arrival, departure_date, departure_time, arrival_date, arrival_time, bus_capacity, bus_number)
     VALUES (:departure, :arrival, :departure_date, :departure_time, :arrival_date, :arrival_time, :bus_capacity, :bus_number)";
     $stmt = $conn->prepare($sql);
     $stmt->execute(array(
