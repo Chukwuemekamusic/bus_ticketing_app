@@ -113,7 +113,7 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
                 </form>
             </div>
         </div>
-        <br><br><br></br></br>
+        <br>
 
         <div id="latab" class="container-fluid">
             <div>
@@ -130,45 +130,39 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
                     <thead>
                         <tr>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Inbound Departure</a>
-                                
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Inbound Departure</a>  
                             </th>
                             <th class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">One-way Arrival</a>
-                                
                             </th>
                             <th class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">One-way Departure Date</a>
-                                
                             </th>
                             <th class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">One-way Departure Time</a>
-                                
                             </th>
                             <th class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure</a>
-                                
                             </th>
                             <th class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Arrival</a>
-                                
                             </th>
                             <th class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure Date</a>
-                                
                             </th>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure Time</a>
-                                
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Return Departure Time</a>   
                             </th>
                             <th class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Total Paid</a>
-                                
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Total Paid</a> 
+                            </th>
+                            <th class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Status</a> 
                             </th>
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody style="font-size: 14px";>
                     <?php foreach ($result as $row): ?>
                         <?php $date1 = $row['one_departure_date']; $dayWeek1 = date('D', strtotime($date1));
                         if ($row['return_departure_date']) { 
@@ -177,15 +171,27 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
                         ?>
                         <tr class="bg-dark">
                             <td><dropdown-item><?php echo $row['one_departure']; ?></dropdown-item></td>
-                            <td><dropdown-menu><?php echo $row['one_arrival']; ?></dropdown-menu></td>                            
+                            <td><dropdown-item><?php echo $row['one_arrival']; ?></dropdown-item></td>                            
                             <td><dropdown-item><?php echo "{$date1} {$dayWeek1}" ; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['one_departure_time']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_departure']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_arrival']; ?></dropdown-item></td>
-                            <td><dropdown-menu><?php echo $row['return_departure_date']; ?></dropdown-menu></td>
+                            <!-- <td><dropdown-menu><?php echo $row['return_departure_date']; ?></dropdown-menu></td> -->
                             <td><dropdown-item><?php echo "{$date2} {$dayWeek2}" ; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['return_departure_time']; ?></dropdown-item></td>
                             <td><dropdown-item><?php echo $row['total_paid']; ?></dropdown-item></td>
+                            <td><dropdown-item>
+                                <?php
+                                    $trip_date1 = strtotime($date1); // Convert trip 1 date to Unix timestamp
+                                    $trip_date2 = strtotime($date2); // Convert trip 2 date to Unix timestamp
+                                    $current_date = time(); // Get current Unix timestamp
+                                    if ($current_date > $trip_date1 && $current_date > $trip_date2) {
+                                      echo "Completed"; // If both trip dates have passed, trip is completed
+                                    } else {
+                                      echo "Active"; // If one or none of the trip dates have passed, trip is active
+                                    }
+                                ?></dropdown-item>
+                                </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
