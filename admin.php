@@ -55,6 +55,13 @@ $sql5 = "SELECT id, name, email, message
 $stmt = $conn->prepare($sql5);
 $stmt->execute();
 $feedback = $stmt->get_result();
+$stmt->close(); 
+
+$sql7 = "SELECT booking_id, firstname, lastname, one_departure_date, return_departure_date, total_paid
+        FROM bookings order by one_departure_date DESC";
+$stmt = $conn->prepare($sql7);
+$stmt->execute();
+$bookings = $stmt->get_result();
 $stmt->close();
 
 ?>
@@ -87,7 +94,8 @@ $stmt->close();
                 <div class="col-md-10">
                     <nav>
                         <ul class="nav justify-content-end">
-                        <li><a href="admin.php">Manage System</a></li>
+                        <li><a href="admin.php">Home</a></li>
+                        <li><a href="admin_bus_schedules.php">Manage Bus Schedules</a></li>
                         <li><p>Hello <?php print $first_name; ?>!</p>
                             </li>
                             <li><a href="logout.php">Logout</a></li>
@@ -102,6 +110,8 @@ $stmt->close();
     <main>
         <div>
                     <hr>
+                    <div class="container text-center">
+                    </div><br>  
                     <div class="container">
             <form class="contactinfo">
             <label><strong>Number of Bookings: </strong><?php echo $bookingcount; ?></label>
@@ -115,6 +125,7 @@ $stmt->close();
             </form>
 
         </div><br>
+        
 
         <div class="container">
         <label><strong>Registered Users:</strong></label>
@@ -147,19 +158,47 @@ $stmt->close();
 
         <div class="container">
          
-  <h6>Change User Password:</h6>
   <form class="contactinfo" method="POST" action="">
+  <h6>Change User Password:</h6>
     <label for="userid">User ID:</label>
     <input type="text" name="userid" id="userid" required>
    
     <label for="newpassword">New Password:</label>
     <input type="password" name="newpassword" id="newpassword" required>
-    
+    <br><br>
     <input type="submit" name="change_password" value="Change Password">
 </form>
 </div>
             <br><br>
+            <div>
+
+<div><br><br>
             <div class="container">
+                <h3>Bookings</h3>
+    
+            <table class="table table-bordered">
+
+<tr class="table-info">
+    <th>booking_id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>One Departure Date</th>
+    <th>Return Departure Date</th>
+    <th>Total Paid</th>
+</tr>
+            <?php while ($row = $bookings->fetch_assoc()) { ?>
+            <tr class="table-success">
+                <td><?php echo $row['booking_id']; ?></td>
+                <td><?php echo $row['firstname']; ?></td>
+                <td><?php echo $row['lastname']; ?></td>
+                <td><?php echo $row['one_departure_date']; ?></td>
+                <td><?php echo $row['return_departure_date']; ?></td>
+                <td><?php echo $row['total_paid']; ?></td>
+</tr>
+<?php } ?>
+</table>
+        </div><br><br>
+        <div class="container">
                 <h3>Users Feedback</h3>
 
 <table class="table table-bordered">
@@ -182,10 +221,6 @@ $stmt->close();
 
             </div>
             <br><br>  
-            <div class="container">
-                <h3>Manage Bookings</h3>
-            </div>
-        </div>
     </main>
 
     <footer>
