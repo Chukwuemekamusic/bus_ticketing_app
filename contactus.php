@@ -61,7 +61,7 @@ $last_name = $_SESSION['last_name'];
             <p style="text-align: center;">Please get in touch with us. We'll contact you as soon as we can after you complete the form below.
             </p>
         <div id="customerfeedback">
-            <form class="contactinfo" action="thankyou.html" method="get">
+            <form class="contactinfo" action="submit-feedback.php" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br><br>
                 <label for="email">Email:</label>

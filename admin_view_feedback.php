@@ -43,7 +43,7 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
                         <ul class="nav justify-content-end">
                         <li><a href="admin.php">Home</a></li>
                         <li><a href="admin_bus_schedules.php">Manage Bus Schedules</a></li>
-                        <li><a href="admin_view_feedback.php">View Feedback</a></li>
+                        <li><a href="admin_view_feedback.php">User Feedback</a></li>
                         <li><p>Hello <?php print $first_name; ?>!</p>
                             </li>
                             <li><a href="logout.php">Logout</a></li>
