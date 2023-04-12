@@ -95,8 +95,8 @@ $stmt->close();
                     <nav>
                         <ul class="nav justify-content-end">
                         <li><a href="admin.php">Home</a></li>
-                        <li><a href="admin_view_feedback.php">View Feedback</a></li>
                         <li><a href="admin_bus_schedules.php">Manage Bus Schedules</a></li>
+                        <li><a href="admin_view_feedback.php">View Feedback</a></li>
                         <li><p>Hello <?php print $first_name; ?>!</p>
                             </li>
                             <li><a href="logout.php">Logout</a></li>
@@ -199,29 +199,6 @@ $stmt->close();
 <?php } ?>
 </table>
         </div><br><br>
-        <div class="container">
-                <h3>Users Feedback</h3>
-
-<table class="table table-bordered">
-
-<tr class="table-info">
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Message</th>
-</tr>
-            <?php while ($row = $feedback->fetch_assoc()) { ?>
-            <tr class="table-success">
-                <td><?php echo $row['ID']; ?></td>
-                <td><?php echo $row['Name']; ?></td>
-                <td><?php echo $row['Email']; ?></td>
-                <td><?php echo $row['Message']; ?></td>
-</tr>
-<?php } ?>
-</table>
-
-            </div>
-            <br><br>  
     </main>
 
     <footer>
