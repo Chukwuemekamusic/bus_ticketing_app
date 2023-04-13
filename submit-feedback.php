@@ -10,12 +10,11 @@ include("connection.php");
 
   $sql = "INSERT INTO feedback (name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
   if (mysqli_query($conn, $sql)) {
-    header('Location: thankyou.html');
+    header('Location: thankyou.php');
     exit;
   } else {
     header('Location: contactus.php');
     exit;
   }
 
-mysqli_close($conn);
 ?>
