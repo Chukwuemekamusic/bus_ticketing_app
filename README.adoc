@@ -1,0 +1,92 @@
+// # folklore
+= Requirement for Bus Ticketing App
+
+== Introduction
+
+This document outlines the requirements for running the Bus Ticketing App.
+
+== Configuration
+
+Before using the Bus App, ensure that the following software is installed:
+
+PHP 7.0 or higher 
+
+MySQL 5.4 or higher
+
+Apache 2.4 or higher
+
+PHPMyAdmin
+
+=== Connection to MySQL database
+
+You will also need to configure the connection to your MySQL database. To do this, adjust the settings in the two connection files to match the name of your database and your database password.
+
+The connection files are:
+
+    * connection.php: This is the main connection file used for the webapp. It uses mysqli_connect.
+        ** Relative location: cmm004_bus_app/connection.php
+    * connection_pdo.php: This is used only when in populating the bus_schedules table. It used PDO to connect
+        ** Relative location: cmm004_bus_app/tables_creation/connection_pdo.php
+
+
+== Creating the Tables
+
+To create the required tables, create a database named BusApp in your MySQL server using phpMyAdmin. There are 6 tables used in this database:
+
+    * bus_schedules       
+    * bus_seats    
+    * users
+    * bookings
+
+Then, you can choose one of the following options:
+
+=== Option A (preferred)
+
+Run the create_table.php script located inside the tables_creation folder on your browser to create all the tables into your database. 
+
+Relative Path for the create_table.php: 
+    
+    * cmm004_bus_app/tables_creation/create_table.php
+
+This will automatically load the Event handler and Trigger functions in the code. 
+The Trigger function automatically updates the number of seats when a seat status changes to booked.
+Event handler changes the status of a bus trip when it is completed or when date is passed.
+
+=== Option B
+
+Use the individual table's MySQL scripts in the tables_creation folder 
+
+== Populating the bus_schedules and bus_seat Tables
+
+To populate the bus_schedules table and bus_seats automatically, run the populate_tables.php located inside the tables_creation folder once. 
+
+    * Relative Path === cmm004_bus_app/tables_creation/populate_tables.php. 
+
+== Software Requirements
+=== Operating System
+
+The Bus Booking Web App can run on any operating system that supports a web browser.
+
+=== Web Server
+
+The web server must support PHP version 7 or higher and Apache 2.4 or higher.
+
+=== Database
+
+The database used for the Web App must support MySQL version 5.7 or higher.
+
+=== Front-End Frameworks
+
+The Web App uses Bootstrap and jQuery.
+
+=== Additional Libraries
+
+...
+
+=== Browser Compatibility
+
+The Storytelling Web App is compatible with all modern web browsers including Chrome, Firefox, Safari, and Edge.
+
+=== Conclusion
+
+By meeting these software requirements, users can run the Storytelling Web App on their local machine or on a web server.

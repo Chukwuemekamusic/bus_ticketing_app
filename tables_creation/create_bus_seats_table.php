@@ -3,7 +3,7 @@
       on a bus schedule when a seat is booked.-->
 
 <?php 
-include_once("connection.php");
+include_once("../connection.php");
 
 // Create the bus_seats table
 $sql = "CREATE TABLE bus_seats (

@@ -27,8 +27,25 @@ function get_user_details($details, $table, $condition = '', $order_by = '')
     }
 }
 
-function get_single_detail($name, $table, $condition) {
+function get_single_detail($name, $table, $condition)
+{
     return get_user_details($name, $table, $condition)[0][$name];
 }
 
-?>
+function update_bus_seats($table,$status, $seat_number, $busID)
+{
+    global $conn;
+
+    // Update seat status in database
+    $sql = "UPDATE $table SET status =? WHERE seat_number =? AND bus_schedule_id =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sii", $status, $seat_number, $busID);
+    $stmt->execute();
+
+    // Handle errors if necessary
+    if (!$stmt) {
+        echo "Error: " . $conn->error;
+    } else {
+        echo 'done!!!';
+    }
+}

@@ -1,7 +1,15 @@
 <?php
 session_start();
+ob_start();
+include_once('./connection.php');
+include_once('./functions.php');
 $first_n = $_POST['first_n'];
 $last_n = $_POST['last_n'];
+
+$busId =  $_SESSION['bus_id'] ?? '';
+$returnBusId =  $_SESSION['return_bus_id'] ?? ''; 
+$seat_number = $_SESSION['selected_seat'] ?? '';
+$returnSeat = $_SESSION['return_selected_seat'] ?? '';
 
 class Card_validator {
     private $card_number;
@@ -67,6 +75,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo "<p>Credit card number is valid and Approved.. Please proceed.</p>";
         $_SESSION['first_n'] = $first_n;
         $_SESSION['last_n'] = $last_n;
+        // update outbound seats to booked
+        update_bus_seats('bus_seats', 'booked', $seat_number, $busId);
+        // update return seat if available
+        if ($returnSeat) {
+            update_bus_seats('bus_seats', 'booked', $returnSeat, $returnBusId);
+        }
         header("Location: bookingconfirmation.php"); //send user to confirmation page
         exit();
 
@@ -74,4 +88,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Credit card details is invalid.. Please return to <a href='payment.php'>Payment page</a> & input correct details</p>";
     }
 }
+ob_end_flush();
 ?>
