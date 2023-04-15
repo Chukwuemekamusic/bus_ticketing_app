@@ -2,7 +2,7 @@
 // creates bus_schedules trip and sets an event scheduler to handle trip_status
 // RUN ONLY ONCE!
 
-include_once("connection.php");
+include_once("../connection.php");
 
 $sql = "CREATE TABLE bus_schedules (                        
 bus_schedule_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -29,7 +29,7 @@ if (mysqli_query($conn, $sql)) {
     $sql2 = "CREATE EVENT close_trip_status
     ON SCHEDULE EVERY 12 HOUR
     DO
-        UPDATE bus_schedules SET trip_status = 'closed' WHERE departure_date < CURDATE() OR seats_remaining = 0;
+    UPDATE bus_schedules SET trip_status = 'closed' WHERE departure_date < CURDATE() OR seats_available = 0;
     ";
     if (mysqli_query($conn, $sql2)) {
         echo "Event close_trip_status created!";
@@ -43,4 +43,3 @@ if (mysqli_query($conn, $sql)) {
 
 
 mysqli_close($conn);
-?>
