@@ -143,13 +143,13 @@ $stmt->close();
     </tr>
                 <?php while ($row = $allusers->fetch_assoc()) { ?>
                 <tr class="table-success">
-                    <td><?php echo $row['uid']; ?></td>
-                    <td><?php echo $row['first_name']; ?></td>
-                    <td><?php echo $row['last_name']; ?></td>
-                    <td><?php echo $row['phone_number']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['auth']; ?></td>
+                    <td class="text-dark"><?php echo $row['uid']; ?></td>
+                    <td class="text-dark"><?php echo $row['first_name']; ?></td>
+                    <td class="text-dark"><?php echo $row['last_name']; ?></td>
+                    <td class="text-dark"><?php echo $row['phone_number']; ?></td>
+                    <td class="text-dark"><?php echo $row['email']; ?></td>
+                    <td class="text-dark"><?php echo $row['username']; ?></td>
+                    <td class="text-dark"><?php echo $row['auth']; ?></td>
     </tr>
     <?php } ?>
 </table>
@@ -189,12 +189,12 @@ $stmt->close();
 </tr>
             <?php while ($row = $bookings->fetch_assoc()) { ?>
             <tr class="table-success">
-                <td><?php echo $row['booking_id']; ?></td>
-                <td><?php echo $row['firstname']; ?></td>
-                <td><?php echo $row['lastname']; ?></td>
-                <td><?php echo $row['one_departure_date']; ?></td>
-                <td><?php echo $row['return_departure_date']; ?></td>
-                <td><?php echo $row['total_paid']; ?></td>
+                <td class="text-dark"><?php echo $row['booking_id']; ?></td>
+                <td class="text-dark"><?php echo $row['firstname']; ?></td>
+                <td class="text-dark"><?php echo $row['lastname']; ?></td>
+                <td class="text-dark"><?php echo $row['one_departure_date']; ?></td>
+                <td class="text-dark"><?php echo $row['return_departure_date']; ?></td>
+                <td class="text-dark"><?php echo $row['total_paid']; ?></td>
 </tr>
 <?php } ?>
 </table>

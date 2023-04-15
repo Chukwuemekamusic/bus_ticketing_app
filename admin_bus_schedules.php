@@ -108,9 +108,9 @@ $stmt->close();
             </div><br><br>
 <div>
 <h6><strong>Modify bus_schedules</strong></h6>
-<table class="table table-striped">
+<table class="table table-bordered">
 <thead>
-    <tr>
+    <tr class="table-info">
       <th scope="col" data-sortable>#</th>
       <th scope="col" data-sortable>Departure</th>
       <th scope="col" data-sortable>Arrival</th>
@@ -127,18 +127,18 @@ $stmt->close();
   </thead>
   <tbody>
     <?php foreach ($buses as $i => $bus) : ?>
-    <tr>
+    <tr class="table-success">
       <th scope="row"><?php echo $i + 1 ?></th>
-      <td><?php echo $bus['departure']?></td>
-      <td><?php echo $bus['arrival']?></td>
-      <td><?php echo $bus['departure_date']?></td>
-      <td><?php echo $bus['departure_time']?></td>
-      <td><?php echo $bus['arrival_date']?></td>
-      <td><?php echo $bus['arrival_time']?></td>
-      <td><?php echo $bus['bus_capacity']?></td>
-      <td><?php echo $bus['seats_booked']?></td>
-      <td><?php echo $bus['seats_available']?></td>  
-      <td><?php echo $bus['bus_number']?></td>
+      <td class="text-dark"><?php echo $bus['departure']?></td>
+      <td class="text-dark"><?php echo $bus['arrival']?></td>
+      <td class="text-dark"><?php echo $bus['departure_date']?></td>
+      <td class="text-dark"><?php echo $bus['departure_time']?></td>
+      <td class="text-dark"><?php echo $bus['arrival_date']?></td>
+      <td class="text-dark"><?php echo $bus['arrival_time']?></td>
+      <td class="text-dark"><?php echo $bus['bus_capacity']?></td>
+      <td class="text-dark"><?php echo $bus['seats_booked']?></td>
+      <td class="text-dark"><?php echo $bus['seats_available']?></td>  
+      <td class="text-dark"><?php echo $bus['bus_number']?></td>
       <td>
         <button type="button" class="btn-sm btn-primary">Edit</button>
         <button type="button" class="btn-sm btn-danger">Delete</button>
