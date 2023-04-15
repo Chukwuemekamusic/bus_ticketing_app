@@ -74,11 +74,11 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
                 if ($result->num_rows > 0) {
                     echo "<table class='table table-bordered'><tr class='table-info'><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Delete</th></tr>";
                     while($row = $result->fetch_assoc()) {
-                    echo "<tr class='table-success'><td>" . $row["name"]. "</td><td>" . $row["email"]. "</td><td>" . $row["subject"]. "</td><td>" . $row["message"]. "</td><td><a href='deletefeedback.php?id=" . $row["id"]. "'>Delete</a></td></tr>";
+                    echo "<tr class='table-success'><td class ='text-dark'>" . $row["name"]. "</td><td class ='text-dark'>" . $row["email"]. "</td><td class ='text-dark'>" . $row["subject"]. "</td><td class ='text-dark'>" . $row["message"]. "</td><td class ='text-dark'><a href='deletefeedback.php?id=" . $row["id"]. "'>Delete</a></td></tr>";
                     }
                     echo "</table>";
                 } else {
-                    echo "<h6>No feedback found</h6>.";
+                    echo "<h6>No feedback found.</h6>";
                 }
 
                 $conn->close();
