@@ -8,7 +8,7 @@ $dbname = "BusApp";
 // $servername = "lamp-mysql8";
 // $username = 'root';
 // $password = 'tiger';
-// $dbname = 'BusApp_test';
+// $dbname = 'BusApp';
 
 // $servername = "localhost";
 // $username = "root";
