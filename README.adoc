@@ -91,4 +91,4 @@ The Storytelling Web App is compatible with all modern web browsers including Ch
 
 === Conclusion
 
-By meeting these software requirements, users can run the Storytelling Web App on their local machine or on a web server.
+By meeting these software requirements, users can run the Bus Ticketing Web App on their local machine or on a web server.
