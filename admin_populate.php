@@ -1,6 +1,6 @@
 <?php
 
-include_once("connection.php");
+include_once("../cmm004_bus_app/tables_creation/connection_pdo.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $departure = $_POST["departure"];
@@ -15,20 +15,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 
     $sql = "INSERT INTO bus_schedules (departure, arrival, departure_date, departure_time, arrival_date, arrival_time, bus_capacity, bus_number)
-    VALUES (:departure, :arrival, :departure_date, :departure_time, :arrival_date, :arrival_time, :bus_capacity, :bus_number)";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute(array(
-        ':departure' => $departure,
-        ':arrival' => $arrival,
-        ':departure_date' => $departure_date,
-        ':departure_time' => $departure_time,
-        ':arrival_date' => $arrival_date,
-        ':arrival_time' => $arrival_time,
-        ':bus_capacity' => $bus_capacity,
-        ':bus_number' => $bus_number
-    ));
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->execute(array(
+    $departure,
+    $arrival,
+    $departure_date,
+    $departure_time,
+    $arrival_date,
+    $arrival_time,
+    $bus_capacity,
+    $bus_number
+));
 
-    echo "New record created successfully" . '<br>';
+
+    echo "New record created successfully" . '<br>' . '<a href="admin_bus_schedules.php">Return to Bus Schedule</a>';
+
     // get the bus_id of the newly added bus
     $bus_id = $conn->lastInsertId();
     // add seats for the bus to the 'bus_seats' table
@@ -42,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':seat_number' => $seat_number,
             ':status' => $status
         ));
-        echo "Seat $seat_number added for bus $bus_id" . '<br>';
+        // echo "Seat $seat_number added for bus $bus_id" . '<br>';
     }
 }
 

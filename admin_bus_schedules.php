@@ -15,7 +15,7 @@ $user_id = get_single_detail('uid', 'users', "email = '$email'");
 }
 $conn = new mysqli($servername, $username, $password, $dbname);
  
-$sql6 = "SELECT * FROM bus_schedules ORDER BY departure_date";
+$sql6 = "SELECT * FROM bus_schedules ORDER BY departure_date desc";
 $stmt = $conn->prepare($sql6);
 $stmt->execute();
 $buses = $stmt->get_result();
