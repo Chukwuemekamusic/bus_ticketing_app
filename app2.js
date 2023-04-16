@@ -6,18 +6,19 @@ document.addEventListener("DOMContentLoaded", function() {
     departureDateInput.addEventListener("change",function () {
         let today = new Date();
         if (new Date(departureDateInput.value) < today.setHours(0, 0, 0, 0)) {
-            alert("Return date must be today or a future date.");
+            alert("Travel date must be today or a future date.");
             departureDateInput.value="";
         }
     });
+
+    
   
   })
   
   // this function 
   function addReturnInput() {
     const element = document.getElementById("returndate");
-  
-    // check if there is any element in the html with class 'return' 
+      // check if there is any element in the html with class 'return' 
     if (!element) { 
       var form = document.getElementById("traveldate");
     //   form.removeChild(document.getElementById("searchbusbtn"));
@@ -38,24 +39,17 @@ document.addEventListener("DOMContentLoaded", function() {
       var emptyspace = document.createElement("br");
       emptyspace.setAttribute("class", "returnspace");
       form.appendChild(emptyspace);
-    //   form.appendChild(emptyspace);
-      
   
-    //   // check return date and display 'Search for Bus' 
-    //   var submitBtn = document.createElement("button");
-    //   submitBtn.setAttribute("type", "submit");
-    //   submitBtn.setAttribute("id", "searchbusbtn");
-    //   submitBtn.innerHTML = "Search for Bus";
-    //   form.appendChild(submitBtn);
-  
-      returnDateInput.addEventListener("change", function () {      
-        let today = new Date();
-        if (new Date(returnDateInput.value) < todaytoday.setHours(0, 0, 0, 0)) {
-            alert("Return date must be today or a future date");
-            returnDateInput.value="";
-        }
-        // TODO need to improve the code to only accept returndate >= departing date
-    });
+        // add event listener for the return date input
+        
+        returnDateInput.addEventListener("change", function() {
+          let departureDate = new Date(document.getElementById("departuredate").value);
+          let returnDate = new Date(returnDateInput.value);
+          if (returnDate < departureDate) {
+              alert("Return date must be after departure date.");
+              returnDateInput.value = "";
+          }
+      });
   
   
     }}

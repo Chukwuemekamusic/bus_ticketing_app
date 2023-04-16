@@ -3,7 +3,7 @@
 
 == Introduction
 
-This document outlines the requirements for running the Bus Ticketing App.
+The Bus Ticketing App is a web-based application that allows users to book and pay for bus tickets online. It provides an easy and convenient way for users to book their trips and select their preferred seats without having to physically visit a bus terminal. The app is designed to be user-friendly and offers features such as real-time bus schedules, seat selection, and online payments.
 
 == Configuration
 
@@ -37,6 +37,8 @@ To create the required tables, create a database named BusApp in your MySQL serv
     * bus_seats    
     * users
     * bookings
+    * feedback
+    * users_booking
 
 Then, you can choose one of the following options:
 
