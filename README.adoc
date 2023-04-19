@@ -87,7 +87,7 @@ The Web App uses Bootstrap and jQuery.
 
 === Browser Compatibility
 
-The Storytelling Web App is compatible with all modern web browsers including Chrome, Firefox, Safari, and Edge.
+The Bus Ticketing Web App is compatible with all modern web browsers including Chrome, Firefox, Safari, and Edge.
 
 === Conclusion
 
