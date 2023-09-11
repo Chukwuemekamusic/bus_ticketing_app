@@ -1,5 +1,5 @@
 // # folklore
-= Requirement for Bus Ticketing App .1
+= Requirement for Bus Ticketing App
 
 == Introduction
 
